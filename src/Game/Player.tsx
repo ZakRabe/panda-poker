@@ -27,16 +27,24 @@ const Player: FC<PlayerProps> = ({ id }) => {
   }
   return (
     <div className="player" style={{}}>
-      <span style={{ whiteSpace: "nowrap" }}>{player.name}</span>
-      {player.img && (
+      <span
+        style={{
+          whiteSpace: "nowrap",
+          fontFamily: "Blender pro",
+          fontWeight: "bold",
+          fontSize: "1.1rem",
+        }}
+      >
+        {player.name}
+      </span>
+      {player.img ? (
         <img
           style={{ width: 50, borderRadius: "50%" }}
           alt={player.name}
           title={player.name}
           src={player.img}
         />
-      )}
-      {!player.name && !player.img && (
+      ) : (
         <img
           style={{ width: 50, borderRadius: "50%" }}
           alt="very mysterious"
@@ -44,7 +52,6 @@ const Player: FC<PlayerProps> = ({ id }) => {
           src={"/mystery.png"}
         />
       )}
-      {!player.img && <div>{player.name}</div>}
     </div>
   );
 };

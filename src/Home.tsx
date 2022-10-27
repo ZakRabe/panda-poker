@@ -21,14 +21,14 @@ const Home = () => {
           </Button>
         </Link>
       </div>
-      <p>
-        <span>Made with ❤️ : </span>
-        <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
-          Zak Rabe
-        </a>
-      </p>
+
       <h2>Tech stack</h2>
       <ul>
+        <li>
+          <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
+            ❤️
+          </a>
+        </li>
         <li>
           <a
             target="_blank"

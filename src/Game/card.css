@@ -12,6 +12,7 @@
   color: rgb(255, 180, 31);
   cursor: pointer;
   user-select: none;
+  box-shadow: 0px 0px 25px -10px black;
 }
 
 .inner {

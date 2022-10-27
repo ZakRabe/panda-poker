@@ -1,0 +1,16 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Blender Pro;
+}
+
+.ant-layout-header {
+  background-color: black !important;
+}
+
+.ant-btn-primary {
+  background-color: rgb(255, 180, 31) !important;
+  border-color: black !important;
+}

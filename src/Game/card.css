@@ -1,0 +1,64 @@
+.card {
+  display: flex;
+  border-radius: 0.8rem;
+  height: 7rem;
+  width: 4rem;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: hidden;
+  color: rgb(255, 180, 31);
+  cursor: pointer;
+  user-select: none;
+}
+
+.inner {
+  position: relative;
+  display: inline;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  border-radius: 0.8rem;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  border: 3px solid rgb(255, 180, 31);
+
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.back {
+  background-color: #000;
+  background-image: url("./logo.png");
+  background-repeat: space;
+  background-size: 20px;
+}
+.back.empty {
+  background-color: #e8e9ea;
+  background-image: none;
+}
+
+.card.active .front {
+  background-color: rgb(255, 180, 31);
+  color: white;
+}

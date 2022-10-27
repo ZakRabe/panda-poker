@@ -26,7 +26,7 @@ const Home = () => {
         </Link>
       </div>
 
-      <h2>Tech stack</h2>
+      <h2>Recipe</h2>
       <ul>
         <li>
           <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">

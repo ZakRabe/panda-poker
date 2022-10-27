@@ -33,7 +33,7 @@ const New = () => {
         <Typography.Title>New Game</Typography.Title>
 
         <div style={{ marginBottom: 10 }}>
-          <label htmlFor="name">Game Name</label>
+          <label htmlFor="name">Name</label>
           <Input
             name="name"
             value={name}

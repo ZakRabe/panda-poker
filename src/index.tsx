@@ -35,7 +35,7 @@ const Root = () => {
     img: "",
   });
 
-  const [isNewUser, setIsNewUser] = useState(!user.id);
+  const [isNewUser] = useState(!user.id);
 
   // check for existing userId in localStorage
   useEffect(() => {
@@ -46,6 +46,7 @@ const Root = () => {
     const newUserId = window.localStorage.getItem("userId") as string;
     setUser((prev) => ({ ...prev, id: newUserId }));
   }, [isNewUser]);
+
   useEffect(() => {
     if (!user.id) {
       return;
@@ -57,7 +58,6 @@ const Root = () => {
     get(userRef)
       .then((snapshot) => {
         if (!snapshot.exists()) {
-          setIsNewUser(true);
           // create a user if one doesn't exist
           set(userRef, {
             name: "",

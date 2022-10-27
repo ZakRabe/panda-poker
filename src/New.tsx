@@ -9,8 +9,8 @@ import database from './firebase'
 
 const New = () => {
   useEffect(() => {
-    document.title = "New Game - Persefoni Poker";
-  });
+    document.title = "New Game";
+  }, []);
   const navigate = useNavigate();
   const [name, setName] = useState("New Poker Game");
 

@@ -23,6 +23,9 @@ const Game = () => {
     players: {},
     revealed: false,
   });
+  useEffect(() => {
+    document.title = game.name;
+  }, [game.name]);
   const [revealed, setRevealed] = useState(false);
   const [countdown, setCountdown] = useState(0);
 

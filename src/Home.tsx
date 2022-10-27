@@ -1,12 +1,16 @@
 import 'antd/dist/antd.css'
 
 import { Button, Typography } from 'antd'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import AppLayout from './AppLayout'
 import { pop } from './confetti'
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Persefoni Poker";
+  }, []);
   return (
     <AppLayout>
       <Typography.Title>Welcome</Typography.Title>

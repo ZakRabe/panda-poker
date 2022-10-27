@@ -39,7 +39,12 @@ const AppLayout: FC = ({ children }) => {
               <img
                 src={img}
                 alt={`${name} avatar`}
-                style={{ width: 25, height: 25, marginRight: 5 }}
+                style={{
+                  width: 25,
+                  height: 25,
+                  marginRight: 5,
+                  borderRadius: "50%",
+                }}
               />
             )}
             {name}

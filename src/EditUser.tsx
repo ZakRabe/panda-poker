@@ -86,7 +86,7 @@ const EditUser: FC<Pick<ModalProps, "open" | "onCancel" | "onOk">> = ({
           <img
             alt={`${user.name} avatar`}
             src={img ?? user.img}
-            style={{ width: 100, height: 100 }}
+            style={{ width: 100, height: 100, borderRadius: "50%" }}
           />
         )}
       </div>

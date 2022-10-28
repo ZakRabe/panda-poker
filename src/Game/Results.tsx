@@ -66,11 +66,12 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     const rows = playerIds.map((playerId) => {
       const vote =
         players[playerId] === CONST_EMPTY_OPTION ? "?" : players[playerId];
+      const voteNumber = Number(vote);
       // dont include non-number votes in average
-      if (vote === CONST_EMPTY_OPTION || Number.isNaN(Number(vote))) {
+      if (vote === CONST_EMPTY_OPTION || Number.isNaN(voteNumber)) {
         skipped += 1;
       } else {
-        total += Number(vote);
+        total += voteNumber;
       }
       count[vote] = (count[vote] ?? 0) + 1;
       const row = {

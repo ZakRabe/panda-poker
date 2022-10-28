@@ -30,7 +30,7 @@ const ProgressRing: FC<{
           stroke="rgb(255, 180, 31)"
           fill="transparent"
           strokeWidth={stroke}
-          strokeDasharray={`${circumference} ${circumference}}`}
+          strokeDasharray={`${circumference} ${circumference}`}
           style={{ strokeDashoffset }}
           r={normalizedRadius}
           cx={radius}
@@ -86,7 +86,7 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     });
 
     rows.sort((a, b) => {
-      if (a.vote === "" || a.vote === "?" || a.vote === "☕") {
+      if (a.vote === CONST_EMPTY_OPTION || a.vote === "?" || a.vote === "☕") {
         return -1;
       }
       return Number(b.vote) - Number(a.vote);

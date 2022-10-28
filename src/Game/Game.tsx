@@ -24,6 +24,9 @@ const Game = () => {
     revealed: false,
   });
   useEffect(() => {
+    if (!game.name) {
+      return;
+    }
     document.title = game.name;
   }, [game.name]);
   const [revealed, setRevealed] = useState(false);
@@ -42,7 +45,7 @@ const Game = () => {
 
   useEffect(
     () => {
-      if (!countdown && game.revealed) {
+      if (countdown === 0 && game.revealed) {
         pop();
         setRevealed(true);
       }

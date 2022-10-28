@@ -18,36 +18,19 @@ const ProgressRing: FC<{
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div style={{ position: "relative" }}>
-      <div
-        style={{
-          position: "absolute",
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-
-          fontWeight: "700",
-          textAlign: "center",
-        }}
-      >
+    <div className="progress-ring">
+      <div className="content">
         <div>
           <div>Average: {isNaN(average) ? "🤔" : average}</div>
-          <div style={{ fontSize: "2rem" }}>{progress}%</div>
+          <div className="progress">{progress}%</div>
         </div>
       </div>
-      <svg
-        height={radius * 2}
-        width={radius * 2}
-        style={{ transform: "rotate(90deg)" }}
-      >
+      <svg height={radius * 2} width={radius * 2}>
         <circle
           stroke="rgb(255, 180, 31)"
           fill="transparent"
           strokeWidth={stroke}
-          strokeDasharray={circumference + " " + circumference}
+          strokeDasharray={`${circumference} ${circumference}}`}
           style={{ strokeDashoffset }}
           r={normalizedRadius}
           cx={radius}
@@ -119,13 +102,7 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
   }, [players]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        margin: 20,
-      }}
-    >
+    <div className="results">
       <div style={{ flex: 1 }}>
         <Table
           size="small"
@@ -135,15 +112,13 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
           columns={columns}
         />
       </div>
-      <div style={{ margin: 15 }}>
-        <ProgressRing
-          average={average}
-          progress={consensus}
-          radius={100}
-          stroke={10}
-        />
-      </div>
-      <br />
+
+      <ProgressRing
+        average={average}
+        progress={consensus}
+        radius={100}
+        stroke={10}
+      />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid'
 import AppLayout from './AppLayout'
 import database from './firebase'
 
+// TODO: move styles to CSS
 const New = () => {
   useEffect(() => {
     document.title = "New Game";

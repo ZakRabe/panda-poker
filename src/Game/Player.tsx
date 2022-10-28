@@ -11,6 +11,7 @@ export type PlayerProps = {
   id: string;
 };
 
+// TODO: Use players context to avoid requesting the data twice
 const Player: FC<PlayerProps> = ({ id }) => {
   const [player, setPlayer] = useState<UserDto>();
 
@@ -26,32 +27,14 @@ const Player: FC<PlayerProps> = ({ id }) => {
     return null;
   }
   return (
-    <div className="player" style={{}}>
-      <span
-        style={{
-          whiteSpace: "nowrap",
-          fontFamily: "Blender pro",
-          fontWeight: "bold",
-          fontSize: "1.1rem",
-        }}
-      >
-        {player.name}
-      </span>
-      {player.img ? (
-        <img
-          style={{ width: 50, borderRadius: "50%" }}
-          alt={player.name}
-          title={player.name}
-          src={player.img}
-        />
-      ) : (
-        <img
-          style={{ width: 50, borderRadius: "50%" }}
-          alt="very mysterious"
-          title={"very mysterious"}
-          src={"/mystery.png"}
-        />
-      )}
+    <div className="player">
+      <span>{player.name}</span>
+
+      <img
+        alt={player.name || "very mysterious"}
+        title={player.name || "very mysterious"}
+        src={player.img || "/mystery.png"}
+      />
     </div>
   );
 };

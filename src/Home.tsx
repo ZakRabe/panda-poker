@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import AppLayout from './AppLayout'
 import { pop } from './confetti'
 
+// TODO: Styles to CSS
 const Home = () => {
   useEffect(() => {
     document.title = "Persefoni Poker";

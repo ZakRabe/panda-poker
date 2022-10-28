@@ -7,3 +7,14 @@
   width: min-content;
   position: relative;
 }
+
+.player span {
+  white-space: nowrap;
+  font-family: "Blender pro";
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.player img {
+  width: 50px;
+  border-radius: 50%;
+}

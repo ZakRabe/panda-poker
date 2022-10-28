@@ -4,6 +4,7 @@ import { FC, useContext, useState } from 'react'
 import EditUser from './EditUser'
 import UserContext from './UserContext'
 
+// TODO: Move styles to CSS
 const AppLayout: FC = ({ children }) => {
   const { name, img } = useContext(UserContext);
   const [isProfileOpen, setProfileOpen] = useState(false);

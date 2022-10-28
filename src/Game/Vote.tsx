@@ -20,7 +20,7 @@ const Vote: FC<VoteProps> = ({ options }) => {
 
   useEffect(() => {
     const playerRef = ref(database, `games/${gameId}/players/${userId}`);
-    onValue(playerRef, (snapshot) => {
+    return onValue(playerRef, (snapshot) => {
       const dto: RoundChoice = snapshot.val();
       setSelected(dto);
     });

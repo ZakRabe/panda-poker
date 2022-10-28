@@ -69,7 +69,7 @@ const Root = () => {
         console.error(error);
       });
     // watch the database user for changes
-    onValue(userRef, (snapshot) => {
+    return onValue(userRef, (snapshot) => {
       const dto: UserDto = snapshot.val();
       setUser({ id: user.id, ...dto });
     });

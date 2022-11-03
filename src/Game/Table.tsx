@@ -19,10 +19,7 @@ type SeatProps = {
 };
 const Seat: FC<SeatProps> = ({ playerId, choice, state }) => {
   return (
-    <div
-      className="seat"
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <div className="seat" style={{ display: "flex", alignItems: "center" }}>
       <Player id={playerId} />
       <Card state={state}>{choice}</Card>
     </div>
@@ -63,6 +60,7 @@ const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
     if (!players) {
       return newSeats;
     }
+    // could use a generator function for this instead of orderIndex?
     // keep most of the users on top/bottom
     const order = [
       "top",

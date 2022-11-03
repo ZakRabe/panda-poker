@@ -21,14 +21,14 @@ const ProgressRing: FC<{
     <div className="progress-ring">
       <div className="content">
         <div>
-          <div>Average: {isNaN(average) ? "🤔" : average}</div>
-          <div className="progress">{progress}%</div>
+          <div>Average: {isNaN(average) ? "🤔" : average.toFixed(1)}</div>
+          <div className="progress">{Math.round(progress)}%</div>
         </div>
       </div>
       <svg height={radius * 2} width={radius * 2}>
         <circle
           stroke="rgb(255, 180, 31)"
-          fill="transparent"
+          fill="white"
           strokeWidth={stroke}
           strokeDasharray={`${circumference} ${circumference}`}
           style={{ strokeDashoffset }}
@@ -87,18 +87,19 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     });
 
     rows.sort((a, b) => {
-      if (a.vote === CONST_EMPTY_OPTION || a.vote === "?" || a.vote === "☕") {
+      if (b.vote === CONST_EMPTY_OPTION || b.vote === "?" || b.vote === "☕") {
         return -1;
       }
       return Number(b.vote) - Number(a.vote);
     });
     const winner = Object.keys(count).sort((a, b) => count[a] - count[b])[0];
+    const calcCount = rows.length - skipped;
 
     return {
       dataSource: rows,
-      average: total / (rows.length - skipped),
+      average: total / calcCount,
       // highest number of votes divided by number of players
-      consensus: (count[winner] / rows.length) * 100,
+      consensus: (count[winner] / calcCount) * 100,
     };
   }, [players]);
 
@@ -117,7 +118,7 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
       <ProgressRing
         average={average}
         progress={consensus}
-        radius={100}
+        radius={85}
         stroke={10}
       />
     </div>

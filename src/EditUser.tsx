@@ -1,6 +1,6 @@
 import { ref, set } from '@firebase/database'
 import { Input, Modal, ModalProps } from 'antd'
-import { ChangeEventHandler, FC, useContext, useEffect, useState } from 'react'
+import { ChangeEventHandler, FC, KeyboardEvent, useContext, useEffect, useState } from 'react'
 
 import { pop } from './confetti'
 import database from './firebase'
@@ -61,6 +61,16 @@ const EditUser: FC<Pick<ModalProps, "open" | "onCancel" | "onOk">> = ({
   return (
     <Modal
       open={open}
+      wrapProps={{
+        onkeyup: (e: KeyboardEvent) => {
+          if (!(e.key === "Enter")) {
+            return;
+          }
+          console.log("hit");
+          onSave();
+          onOk?.(e as any);
+        },
+      }}
       onOk={(e) => {
         onSave();
         onOk?.(e);

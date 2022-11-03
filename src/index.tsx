@@ -28,6 +28,7 @@ const router = createBrowserRouter([
   },
 ]);
 
+// TODO: Store list of user data in one place and expose through context
 const Root = () => {
   const [user, setUser] = useState<User>({
     id: window.localStorage.getItem("userId") ?? "",
@@ -43,7 +44,7 @@ const Root = () => {
       return;
     }
     window.localStorage.setItem("userId", uuid());
-    const newUserId = window.localStorage.getItem("userId") as string;
+    const newUserId = window.localStorage.getItem("userId")!;
     setUser((prev) => ({ ...prev, id: newUserId }));
   }, [isNewUser]);
 

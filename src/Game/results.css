@@ -32,14 +32,6 @@
 .results {
   display: flex;
   flex-direction: row;
-  /* margin: 20px; */
-  /* position: fixed; */
-  /* bottom: 132px; */
-  /* left: 0; */
-  /* width: 100vw; */
-  /* background-color: #f7d389; */
-  /* max-height: 23vh; */
-  /* overflow-y: scroll; */
 }
 
 .ant-table-thead th {
@@ -48,6 +40,13 @@
   z-index: 1;
 }
 
-.voteColumn {
+.voteColumn:not(th),
+.countColumn:not(th) {
   width: 75px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.voteColumn:not(th) {
+  font-weight: 700;
 }

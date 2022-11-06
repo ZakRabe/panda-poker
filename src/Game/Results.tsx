@@ -23,7 +23,7 @@ const ProgressRing: FC<{
         <div>
           <div>average</div>
           <div className="average">
-            {isNaN(average) ? "🤔" : average.toFixed(1)}
+            {isNaN(average) ? "🤔" : parseFloat(average.toFixed(1))}
           </div>
           {/* <div className="progress">{Math.round(progress)}%</div> */}
         </div>
@@ -46,12 +46,18 @@ const ProgressRing: FC<{
 
 const columns = [
   {
+    title: "Count",
+    dataIndex: "countColumn",
+    key: "countColumn",
+    className: "countColumn",
+  },
+  {
     title: "Players",
     dataIndex: "playersColumn",
     key: "playersColumn",
   },
   {
-    title: "Vote",
+    title: "Estimate",
     dataIndex: "voteColumn",
     key: "voteColumn",
     className: "voteColumn",
@@ -84,14 +90,10 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     const rows = Object.keys(counts).map((choice, index) => {
       return {
         vote: choice,
+        countColumn: counts[choice].length,
         voteColumn: (
-          <div
-            style={{
-              textAlign: "center",
-            }}
-            className={`winner_${choice}`}
-          >
-            <strong>{choice}</strong>
+          <div style={{}} className={`winner_${choice}`}>
+            {choice}
           </div>
         ),
         playerIds: counts[choice],
@@ -141,10 +143,10 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     <div className="results">
       <style>
         {winners?.map((winner) => {
-          return `td:has(.winner_${winner}){
+          return `tr:has(.winner_${winner}) td{
   background-color: rgb(255, 180, 31, 0.4);
 }
-td:has(.winner_${winner}):hover{
+tr:has(.winner_${winner}) td:hover{
   background-color: rgb(255, 180, 31, 0.2) !important;
 }
 `;

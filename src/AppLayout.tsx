@@ -57,7 +57,8 @@ const AppLayout: FC = ({ children }) => {
             style={{
               padding: 24,
               margin: 0,
-              height: "calc(100vh - 64px)",
+              marginBottom: 132,
+              // height: "calc(100vh - 64px)",
             }}
           >
             {children}

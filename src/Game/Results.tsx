@@ -122,7 +122,7 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     const highestCount =
       counts[
         Object.keys(counts).sort(
-          (a, b) => counts[a].length - counts[b].length
+          (a, b) => counts[b].length - counts[a].length 
         )[0]
       ].length;
     const winners = Object.keys(counts).filter(

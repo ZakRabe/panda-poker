@@ -57,6 +57,7 @@
 }
 .left .seat {
   flex-direction: row;
+  justify-content: end;
 }
 .right .seat {
   flex-direction: row-reverse;

@@ -8,43 +8,13 @@ import { useParams } from 'react-router'
 
 import { CONST_EMPTY_OPTION } from '../const'
 import database from '../firebase'
-import { Game, GameDto, RoundChoice } from '../types'
-import Card, { CardProps } from './Card'
-import Player from './Player'
-
-type SeatProps = {
-  playerId: string;
-  choice: RoundChoice;
-  state: CardProps["state"];
-};
-const Seat: FC<SeatProps> = ({ playerId, choice, state }) => {
-  return (
-    <div className="seat" style={{ display: "flex", alignItems: "center" }}>
-      <Player id={playerId} />
-      <Card state={state}>{choice}</Card>
-    </div>
-  );
-};
+import { Game, GameDto } from '../types'
+import { renderSeat, SeatProps } from './Seat'
 
 export type TableProps = {
   players?: Game["players"];
   revealed: boolean;
   countdown: number;
-};
-
-const renderSeat = (props: Omit<SeatProps, "state">, revealed = false) => {
-  let { choice } = props;
-  const isEmpty = choice === CONST_EMPTY_OPTION;
-  let state: CardProps["state"] = isEmpty ? "empty" : "hidden";
-
-  if (revealed) {
-    state = "revealed";
-    if (isEmpty) {
-      choice = "?";
-    }
-  }
-
-  return <Seat key={props.playerId} {...props} choice={choice} state={state} />;
 };
 
 const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
@@ -62,6 +32,7 @@ const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
     }
     // could use a generator function for this instead of orderIndex?
     // keep most of the users on top/bottom
+    // 16 users. 2 on each side, rest top/bottom
     const order = [
       "top",
       "bottom",
@@ -71,9 +42,16 @@ const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
       "bottom",
       "top",
       "bottom",
+      "top",
+      "bottom",
+      "top",
+      "bottom",
+      "top",
+      "bottom",
       "left",
       "right",
     ];
+
     let orderIndex = 0;
     Object.keys(players).forEach((playerId) => {
       newSeats[order[orderIndex]].push({

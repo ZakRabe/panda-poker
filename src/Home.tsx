@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import AppLayout from './AppLayout'
+import { bonkSound } from './bonk'
 import { pop } from './confetti'
 
 // TODO: Styles to CSS
@@ -25,6 +26,9 @@ const Home = () => {
             Create a Game
           </Button>
         </Link>
+        <Button type="primary" size="large" onClick={() => bonkSound.play()}>
+          BONK
+        </Button>
       </div>
 
       <h2>Recipe</h2>

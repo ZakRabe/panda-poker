@@ -9,7 +9,4 @@ export const CONST_FIB_OPTIONS = [
   "8",
   "13",
   "21",
-  "34",
-  "55",
-  "89",
 ] as const;

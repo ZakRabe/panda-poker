@@ -1,21 +1,40 @@
 .vote {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 5px;
+  /* position: absolute;
+  top: -100%; */
+  gap: 1rem;
+  display: grid;
   justify-content: center;
   background-color: #f7d389;
   margin-top: 20px;
   padding: 10px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.vote .card:hover {
-  background-color: rgb(255, 180, 31, 0.25);
+.vote .card:nth-of-type(9) {
+  grid-column: 2;
 }
 
-.vote .card:hover,
-.vote .card.active {
+/* .votePanel .card:hover,
+.votePanel .card.active {
   transform: translateY(-15px);
+} */
+
+.votePanel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  background-color: #f7d389;
+  margin-top: 20px;
+  padding: 10px;
+  max-width: 33vw;
+  max-height: 25vh;
+}
+.votePanel *:not(.vote) .card:hover .front {
+  border-color: black;
+}
+
+.votePanel *:not(.vote) .card {
+  height: 14rem;
+  width: 8rem;
 }

@@ -1,13 +1,13 @@
 import { onDisconnect, onValue, ref, set } from '@firebase/database'
 import { Typography } from 'antd'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router'
 
 import AppLayout from '../AppLayout'
 import { pop } from '../confetti'
 import { CONST_COMMON_OPTIONS, CONST_EMPTY_OPTION, CONST_FIB_OPTIONS } from '../const'
 import database from '../firebase'
-import { Game as GameModel, GameDto } from '../types'
+import { Game as GameModel, GameDto, RoundChoice } from '../types'
 import UserContext from '../UserContext'
 import Results from './Results'
 import Table from './Table'
@@ -76,10 +76,37 @@ const Game = () => {
     onDisconnect(playerRef).remove();
   }, [userId, game.id]);
 
+  const tables = useMemo(() => {
+    if (!game.players) {
+      return [];
+    }
+    let currentIndex = 0;
+    // split players into tables every 16 players
+    return Object.keys(game.players).reduce((acc, playerId) => {
+      if (Object.keys(acc[currentIndex] ?? []).length === 16) {
+        currentIndex += 1;
+      }
+      if (!acc[currentIndex]) {
+        acc[currentIndex] = {};
+      }
+      acc[currentIndex][playerId] = (game.players as any)[playerId];
+      return acc;
+    }, [] as Record<string, RoundChoice>[]);
+  }, [game.players]);
+
   return (
     <AppLayout>
       <Typography.Title>{game.name}</Typography.Title>
-      <Table players={game.players} revealed={revealed} countdown={countdown} />
+      <div className="tables">
+        {tables.map((table, index) => (
+          <Table
+            players={table}
+            key={`table_${index}`}
+            revealed={revealed}
+            countdown={countdown}
+          />
+        ))}
+      </div>
       {revealed && <Results players={game.players} />}
       <Vote options={options} />
     </AppLayout>

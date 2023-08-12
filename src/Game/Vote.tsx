@@ -1,57 +1,55 @@
-import './vote.css'
+import "./vote.css";
 
-import { onValue, ref, set } from '@firebase/database'
-import { FC, useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { Popover } from "antd";
+import { FC } from "react";
 
-import { CONST_EMPTY_OPTION } from '../const'
-import database from '../firebase'
-import { RoundChoice } from '../types'
-import UserContext from '../UserContext'
-import Card from './Card'
+import { useVote } from "../hooks/useVote";
+import { RoundChoice } from "../types";
+import Card from "./Card";
 
 export type VoteProps = {
   options: RoundChoice[];
 };
 
 const Vote: FC<VoteProps> = ({ options }) => {
-  const { gameId } = useParams();
-  const { id: userId } = useContext(UserContext);
-  const [selected, setSelected] = useState<RoundChoice>();
+  const [vote, castVote] = useVote();
 
-  useEffect(() => {
-    if (!userId || !gameId) {
-      return;
-    }
-    const playerRef = ref(database, `games/${gameId}/players/${userId}`);
-    return onValue(playerRef, (snapshot) => {
-      const dto: RoundChoice = snapshot.val();
-      setSelected(dto);
-    });
-  }, [gameId, userId]);
-
-  const onChoice = (choice: RoundChoice) => {
-    if (!userId || !gameId) {
-      return;
-    }
-
-    const playerRef = ref(database, `games/${gameId}/players/${userId}`);
-    set(playerRef, choice === selected ? CONST_EMPTY_OPTION : choice);
-  };
-
-  return (
+  const content = (
     <div className="vote">
-      {options.map((value, index) => (
+      {options.map((value) => (
         <Card
-          key={index}
+          key={value}
           state="revealed"
-          active={selected === value}
-          onClick={() => onChoice(value)}
+          active={vote === value}
+          onClick={castVote(value)}
         >
           {value}
         </Card>
       ))}
     </div>
+  );
+
+  return (
+    <>
+      <div className="votePanel">
+        <div>
+          <div className="currentVote">
+            <Popover placement="topLeft" content={content}>
+              <div>
+                <Card state="revealed">{vote}</Card>
+              </div>
+            </Popover>
+          </div>
+          <div className="actions"></div>
+        </div>
+        <div className="gameOptions">
+          <label htmlFor="sittingOut">
+            <input type="checkbox" id="sittingOut" name="sittingOut" />
+            I'm sitting out
+          </label>
+        </div>
+      </div>
+    </>
   );
 };
 

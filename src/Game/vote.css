@@ -14,10 +14,10 @@
   grid-column: 2;
 }
 
-/* .votePanel .card:hover,
-.votePanel .card.active {
-  transform: translateY(-15px);
-} */
+.vote .card:hover,
+.vote .card.active {
+  transform: scale(1.2);
+}
 
 .votePanel {
   position: fixed;
@@ -27,8 +27,6 @@
   background-color: #f7d389;
   margin-top: 20px;
   padding: 10px;
-  max-width: 33vw;
-  max-height: 25vh;
 }
 .votePanel *:not(.vote) .card:hover .front {
   border-color: black;

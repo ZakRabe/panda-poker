@@ -1,13 +1,11 @@
 .vote {
-  /* position: absolute;
-  top: -100%; */
-  gap: 1rem;
-  display: grid;
-  justify-content: center;
   background-color: #f7d389;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   margin-top: 20px;
   padding: 10px;
-  grid-template-columns: repeat(4, 1fr);
 }
 
 .vote .card:nth-of-type(9) {
@@ -20,19 +18,20 @@
 }
 
 .votePanel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  justify-content: center;
   background-color: #f7d389;
+  bottom: 0;
+  justify-content: center;
+  left: 0;
   margin-top: 20px;
   padding: 10px;
+  position: fixed;
 }
-.votePanel *:not(.vote) .card:hover .front {
+.currentVote .card:hover .front {
+  /* TODO: something nice here */
   border-color: black;
 }
 
-.votePanel *:not(.vote) .card {
+.currentVote .card {
   height: 14rem;
   width: 8rem;
 }

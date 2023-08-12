@@ -1,12 +1,12 @@
-import 'antd/dist/antd.css'
+import "antd/dist/antd.css";
 
-import { Button, Typography } from 'antd'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Button, Tag, Typography } from "antd";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import AppLayout from './AppLayout'
-import { bonkSound } from './bonk'
-import { pop } from './confetti'
+import AppLayout from "./AppLayout";
+import { bonkSound } from "./bonk";
+import { pop } from "./confetti";
 
 // TODO: Styles to CSS
 const Home = () => {
@@ -32,56 +32,46 @@ const Home = () => {
       </div>
 
       <h2>Recipe</h2>
-      <ul>
-        <li>
-          <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
-            ❤️
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://firebase.google.com/docs/database"
-            rel="noreferrer"
-          >
-            firebase v9
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://ant.design/" rel="noreferrer">
-            ant design v4
-          </a>
-        </li>
 
-        <li onClick={pop}>
-          {/* eslint-disable-next-line */}
-          <a href="javascript:;">canvas-confetti v1</a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://reactrouter.com/en/main"
-            rel="noreferrer"
-          >
-            react-router v6
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://reactjs.org/" rel="noreferrer">
-            react v17
-          </a>
-        </li>
-      </ul>
-      <p>
-        <a
-          target="_blank"
-          href="https://github.com/ZakRabe/persefoni-poker"
-          rel="noreferrer"
-        >
-          <img src="/github.png" alt="Github" style={{ marginRight: 10 }} />
-          Source
-        </a>
-      </p>
+      <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
+        <Tag color="magenta">❤️</Tag>
+      </a>
+
+      <a
+        target="_blank"
+        href="https://firebase.google.com/docs/database"
+        rel="noreferrer"
+      >
+        <Tag color="red">🔥 firebase v9</Tag>
+      </a>
+
+      <a target="_blank" href="https://ant.design/" rel="noreferrer">
+        <Tag color="green">🐜 ant design v4</Tag>
+      </a>
+
+      <Tag style={{ cursor: "pointer" }} onClick={pop} color="cyan">
+        🎉 canvas-confetti v1
+      </Tag>
+
+      <a
+        target="_blank"
+        href="https://reactrouter.com/en/main"
+        rel="noreferrer"
+      >
+        <Tag color="blue">🚌 react-router v6</Tag>
+      </a>
+
+      <a target="_blank" href="https://reactjs.org/" rel="noreferrer">
+        <Tag color="purple">♻️ react v17</Tag>
+      </a>
+
+      <a
+        target="_blank"
+        href="https://github.com/ZakRabe/persefoni-poker"
+        rel="noreferrer"
+      >
+        <Tag color="">⌨️ source</Tag>
+      </a>
     </AppLayout>
   );
 };

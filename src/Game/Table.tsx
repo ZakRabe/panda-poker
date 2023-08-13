@@ -1,25 +1,16 @@
-import './table.css'
+import "./table.css";
 
-import { runTransaction } from '@firebase/database'
-import { Button } from 'antd'
-import { ref } from 'firebase/database'
-import { FC, useMemo } from 'react'
-import { useParams } from 'react-router'
+import { FC, useMemo } from "react";
 
-import { CONST_EMPTY_OPTION } from '../const'
-import database from '../firebase'
-import { Game, GameDto } from '../types'
-import { renderSeat, SeatProps } from './Seat'
+import { Game } from "../types";
+import { renderSeat, SeatProps } from "./Seat";
 
 export type TableProps = {
   players?: Game["players"];
   revealed: boolean;
-  countdown: number;
 };
 
-const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
-  const { gameId } = useParams();
-
+const Table: FC<TableProps> = ({ players, revealed }) => {
   const seats = useMemo(() => {
     const newSeats: Record<string, Omit<SeatProps, "state">[]> = {
       top: [],
@@ -68,21 +59,6 @@ const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
     return newSeats;
   }, [players]);
 
-  const onReveal = () => {
-    // currently revealed, and will be reset
-    // reset the choices to empty
-    const gameRef = ref(database, `games/${gameId}`);
-    runTransaction(gameRef, (game: GameDto) => {
-      if (game.revealed) {
-        Object.keys(game.players).forEach((playerId) => {
-          game.players[playerId] = CONST_EMPTY_OPTION;
-        });
-      }
-      game.revealed = !game.revealed;
-      return game;
-    });
-  };
-
   return (
     <div className="grid">
       <div className="top">
@@ -92,11 +68,7 @@ const Table: FC<TableProps> = ({ players, revealed, countdown }) => {
         {seats.left.map((props) => renderSeat(props, revealed))}
       </div>
 
-      <div className="table">
-        {countdown || (
-          <Button onClick={onReveal}>{revealed ? "Reset" : "Reveal"}</Button>
-        )}
-      </div>
+      <div className="table"></div>
       <div className="right">
         {seats.right.map((props) => renderSeat(props, revealed))}
       </div>

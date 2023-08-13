@@ -13,7 +13,7 @@ import Vote from "./Vote";
 const options = [...CONST_FIB_OPTIONS, ...CONST_COMMON_OPTIONS];
 const Game = () => {
   const game = useGame();
-  const { revealed, countdown } = useReveal(game);
+  const { revealed, countdown, toggleRevealed } = useReveal(game);
 
   const tables = useMemo(() => {
     if (!game.players) {
@@ -38,16 +38,16 @@ const Game = () => {
       <Typography.Title>{game.name}</Typography.Title>
       <div className="tables">
         {tables.map((table, index) => (
-          <Table
-            players={table}
-            key={`table_${index}`}
-            revealed={revealed}
-            countdown={countdown}
-          />
+          <Table players={table} key={`table_${index}`} revealed={revealed} />
         ))}
       </div>
       {revealed && <Results players={game.players} />}
-      <Vote options={options} />
+      <Vote
+        options={options}
+        revealed={revealed}
+        toggleRevealed={toggleRevealed}
+        countdown={countdown}
+      />
     </AppLayout>
   );
 };

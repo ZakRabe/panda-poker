@@ -1,7 +1,10 @@
+import { ref, runTransaction } from "firebase/database";
 import { useEffect, useState } from "react";
 
 import { pop } from "../confetti";
-import { Game } from "../types";
+import { CONST_EMPTY_OPTION } from "../const";
+import database from "../firebase";
+import { Game, GameDto } from "../types";
 
 export const useReveal = (game: Game) => {
   const [revealed, setRevealed] = useState(false);
@@ -30,5 +33,22 @@ export const useReveal = (game: Game) => {
     [countdown]
   );
 
-  return { revealed, countdown };
+  const toggleRevealed = () => {
+    // currently revealed, and will be reset
+    // reset the choices to empty
+    const gameRef = ref(database, `games/${game.id}`);
+    runTransaction(gameRef, (game: GameDto) => {
+      if (game.revealed) {
+        Object.keys(game.players).forEach((playerId) => {
+          game.players[playerId] = CONST_EMPTY_OPTION;
+        });
+      }
+      game.revealed = !game.revealed;
+      return game;
+    });
+  };
+
+  return { revealed, countdown, toggleRevealed };
 };
+
+export type RevealProps = ReturnType<typeof useReveal>;

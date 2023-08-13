@@ -1,17 +1,23 @@
 import "./vote.css";
 
-import { Popover } from "antd";
-import { FC } from "react";
+import { Button, Popover } from "antd";
+import { Dispatch, FC, MouseEventHandler } from "react";
 
+import { RevealProps } from "../hooks/useReveal";
 import { useVote } from "../hooks/useVote";
 import { RoundChoice } from "../types";
 import Card from "./Card";
 
-export type VoteProps = {
+export type VoteProps = RevealProps & {
   options: RoundChoice[];
 };
 
-const Vote: FC<VoteProps> = ({ options }) => {
+const Vote: FC<VoteProps> = ({
+  options,
+  countdown,
+  revealed,
+  toggleRevealed,
+}) => {
   const [vote, castVote] = useVote();
 
   const content = (
@@ -43,6 +49,11 @@ const Vote: FC<VoteProps> = ({ options }) => {
           <div className="actions"></div>
         </div>
         <div className="gameOptions">
+          {
+            <Button type="primary" onClick={toggleRevealed}>
+              {countdown > 0 ? countdown : revealed ? "Reset" : "Reveal"}
+            </Button>
+          }
           {/* <label htmlFor="sittingOut">
             <input type="checkbox" id="sittingOut" name="sittingOut" />
             I'm sitting out

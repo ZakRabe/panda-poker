@@ -43,10 +43,10 @@ const Vote: FC<VoteProps> = ({ options }) => {
           <div className="actions"></div>
         </div>
         <div className="gameOptions">
-          <label htmlFor="sittingOut">
+          {/* <label htmlFor="sittingOut">
             <input type="checkbox" id="sittingOut" name="sittingOut" />
             I'm sitting out
-          </label>
+          </label> */}
         </div>
       </div>
     </>

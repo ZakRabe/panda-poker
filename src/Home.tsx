@@ -39,23 +39,29 @@ const Home = () => {
 
       <a
         target="_blank"
-        href="https://firebase.google.com/docs/database"
+        href="https://firebase.google.com/docs/database/web/start"
         rel="noreferrer"
       >
         <Tag color="red">🔥 firebase v9</Tag>
       </a>
 
-      <a target="_blank" href="https://ant.design/" rel="noreferrer">
+      <a target="_blank" href="https://4x.ant.design/" rel="noreferrer">
         <Tag color="green">🐜 ant design v4</Tag>
       </a>
 
-      <Tag style={{ cursor: "pointer" }} onClick={pop} color="cyan">
-        🎉 canvas-confetti v1
-      </Tag>
+      <a
+        target="_blank"
+        href="https://github.com/catdad/canvas-confetti"
+        rel="noreferrer"
+      >
+        <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="cyan">
+          🎉 canvas-confetti v1
+        </Tag>
+      </a>
 
       <a
         target="_blank"
-        href="https://reactrouter.com/en/main"
+        href="https://reactrouter.com/en/6.15.0"
         rel="noreferrer"
       >
         <Tag color="blue">🚌 react-router v6</Tag>
@@ -70,7 +76,7 @@ const Home = () => {
         href="https://github.com/ZakRabe/persefoni-poker"
         rel="noreferrer"
       >
-        <Tag color="">⌨️ source</Tag>
+        <Tag color="gold">⌨️ source</Tag>
       </a>
     </AppLayout>
   );

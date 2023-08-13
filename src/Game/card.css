@@ -9,7 +9,7 @@
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-  color: rgb(255, 180, 31);
+  color: #d56f3e;
   cursor: pointer;
   user-select: none;
 }
@@ -41,7 +41,7 @@
 .front {
   transform: rotateY(180deg);
   background-color: #fff;
-  border: 3px solid rgb(255, 180, 31);
+  border: 3px solid #d56f3e;
 
   justify-content: center;
   align-items: center;
@@ -51,9 +51,9 @@
 
 .back {
   background-color: #000;
-  background-image: url("./logo.png");
-  background-repeat: space;
-  background-size: 20px;
+  background-image: url("./background.jpg");
+  background-repeat: repeat;
+  background-size: 100px;
 }
 .back.empty {
   background-color: #a8a9aa;
@@ -61,6 +61,6 @@
 }
 
 .card.active .front {
-  background-color: rgb(255, 180, 31);
+  background-color: #d56f3e;
   color: white;
 }

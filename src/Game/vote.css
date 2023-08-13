@@ -1,9 +1,12 @@
 .vote {
-  background-color: #f7d389;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 5px;
   justify-content: center;
+  background-color: #d0cd94;
   margin-top: 20px;
   padding: 10px;
 }

@@ -1,11 +1,11 @@
-import { ref, set } from '@firebase/database'
-import { Button, Input, Typography } from 'antd'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
-import { v4 as uuid } from 'uuid'
+import { ref, set } from "@firebase/database";
+import { Button, Input, Typography } from "antd";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { v4 as uuid } from "uuid";
 
-import AppLayout from './AppLayout'
-import database from './firebase'
+import AppLayout from "./AppLayout";
+import database from "./firebase";
 
 // TODO: move styles to CSS
 const New = () => {
@@ -13,7 +13,7 @@ const New = () => {
     document.title = "New Game";
   }, []);
   const navigate = useNavigate();
-  const [name, setName] = useState("New Poker Game");
+  const [name, setName] = useState("New Panda Poker Game");
 
   const onCreate = () => {
     const newGameId = uuid().substr(0, 8);

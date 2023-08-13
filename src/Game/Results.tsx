@@ -1,11 +1,11 @@
-import './results.css'
+import "./results.css";
 
-import { Table } from 'antd'
-import { FC, useMemo } from 'react'
+import { Table } from "antd";
+import { FC, useMemo } from "react";
 
-import { CONST_EMPTY_OPTION } from '../const'
-import { Game } from '../types'
-import Player from './Player'
+import { CONST_EMPTY_OPTION } from "../const";
+import { Game } from "../types";
+import Player from "./Player";
 
 const ProgressRing: FC<{
   radius: number;
@@ -30,8 +30,8 @@ const ProgressRing: FC<{
       </div>
       <svg height={radius * 2} width={radius * 2}>
         <circle
-          stroke="rgb(255, 180, 31)"
-          fill="white"
+          fill="#D0CD94"
+          stroke="#47271A"
           strokeWidth={stroke}
           strokeDasharray={`${circumference} ${circumference}`}
           style={{ strokeDashoffset }}
@@ -122,7 +122,7 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     const highestCount =
       counts[
         Object.keys(counts).sort(
-          (a, b) => counts[b].length - counts[a].length 
+          (a, b) => counts[b].length - counts[a].length
         )[0]
       ].length;
     const winners = Object.keys(counts).filter(
@@ -139,19 +139,9 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
     };
   }, [players]);
 
+  // TODO: highlight winner differently in graph
   return (
     <div className="results">
-      <style>
-        {winners?.map((winner) => {
-          return `tr:has(.winner_${winner}) td{
-  background-color: rgb(255, 180, 31, 0.4);
-}
-tr:has(.winner_${winner}) td:hover{
-  background-color: rgb(255, 180, 31, 0.2) !important;
-}
-`;
-        })}
-      </style>
       <div style={{ flex: 1 }}>
         <Table
           size="small"

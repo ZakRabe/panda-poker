@@ -11,7 +11,7 @@ import { pop } from "./confetti";
 // TODO: Styles to CSS
 const Home = () => {
   useEffect(() => {
-    document.title = "Persefoni Poker";
+    document.title = "Panda Poker";
   }, []);
   return (
     <AppLayout>

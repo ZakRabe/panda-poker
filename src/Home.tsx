@@ -1,16 +1,16 @@
-import 'antd/dist/antd.css'
+import "antd/dist/antd.css";
 
-import { Button, Typography } from 'antd'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Button, Typography } from "antd";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import AppLayout from './AppLayout'
-import { pop } from './confetti'
+import AppLayout from "./AppLayout";
+import { pop } from "./confetti";
 
 // TODO: Styles to CSS
 const Home = () => {
   useEffect(() => {
-    document.title = "Persefoni Poker";
+    document.title = "Panda Poker";
   }, []);
   return (
     <AppLayout>
@@ -71,7 +71,7 @@ const Home = () => {
       <p>
         <a
           target="_blank"
-          href="https://github.com/ZakRabe/persefoni-poker"
+          href="https://github.com/ZakRabe/panda-poker"
           rel="noreferrer"
         >
           <img src="/github.png" alt="Github" style={{ marginRight: 10 }} />

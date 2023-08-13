@@ -1,8 +1,8 @@
-import { Button, Layout, Typography } from 'antd'
-import { FC, useContext, useState } from 'react'
+import { Button, Layout, Typography } from "antd";
+import { FC, useContext, useState } from "react";
 
-import EditUser from './EditUser'
-import UserContext from './UserContext'
+import EditUser from "./EditUser";
+import UserContext from "./UserContext";
 
 // TODO: Move styles to CSS
 const AppLayout: FC = ({ children }) => {
@@ -22,14 +22,10 @@ const AppLayout: FC = ({ children }) => {
             href="/"
             style={{ height: "calc(100% - 15px)", margin: 15, lineHeight: 1 }}
           >
-            <img
-              alt="Persefoni Logo"
-              src="/logo.png"
-              style={{ height: "100%" }}
-            />
+            <img alt="logo" src="/logo.png" style={{ height: "100%" }} />
           </a>
           <Typography.Title style={{ margin: 0, color: "white" }}>
-            Persefoni Poker
+            Panda Poker
           </Typography.Title>
 
           <Button

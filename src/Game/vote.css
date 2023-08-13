@@ -1,14 +1,8 @@
 .vote {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 5px;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
-  background-color: #d0cd94;
-  margin-top: 20px;
-  padding: 10px;
 }
 
 .vote .card:nth-of-type(9) {
@@ -21,7 +15,7 @@
 }
 
 .votePanel {
-  background-color: #f7d389;
+  background-color: #f6f4e8;
   bottom: 0;
   justify-content: center;
   left: 0;
@@ -37,4 +31,8 @@
 .currentVote .card {
   height: 14rem;
   width: 8rem;
+}
+
+.ant-popover-inner-content {
+  background-color: #f6f4e8;
 }

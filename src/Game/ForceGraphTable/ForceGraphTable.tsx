@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";
 

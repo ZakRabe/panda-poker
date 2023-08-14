@@ -1,3 +1,5 @@
+import "./game.css";
+
 import { Typography } from "antd";
 import { useMemo } from "react";
 
@@ -40,10 +42,11 @@ const Game = () => {
       {/* <div className="tables">
         {tables.map((table, index) => (
           <Table players={table} key={`table_${index}`} revealed={revealed} />
-        ))}
-      </div> */}
-      <ForceGraphTable players={game.players} />
+          ))}
+        </div> */}
+      <ForceGraphTable players={game.players} revealed={revealed} />
       {/* {revealed && <Results players={game.players} />} */}
+
       <Vote
         options={options}
         revealed={revealed}

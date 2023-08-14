@@ -1,5 +1,3 @@
-import "antd/dist/antd.css";
-
 import { Button, Tag, Typography } from "antd";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";

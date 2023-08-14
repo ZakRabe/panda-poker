@@ -1,17 +1,18 @@
-import './styles.css'
+import "./styles.css";
+import "antd/dist/antd.min.css";
 
-import { get, onValue, ref, set } from '@firebase/database'
-import { StrictMode, useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { v4 as uuid } from 'uuid'
+import { get, onValue, ref, set } from "@firebase/database";
+import { StrictMode, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
-import database from './firebase'
-import Game from './Game/Game'
-import Home from './Home'
-import New from './New'
-import { User, UserDto } from './types'
-import UserContext from './UserContext'
+import database from "./firebase";
+import Game from "./Game/Game";
+import Home from "./Home";
+import New from "./New";
+import { User, UserDto } from "./types";
+import UserContext from "./UserContext";
 
 const router = createBrowserRouter([
   {

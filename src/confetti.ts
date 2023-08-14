@@ -1,5 +1,5 @@
 // @ts-ignore
-import confetti from 'canvas-confetti'
+import confetti from "canvas-confetti";
 
 var duration = 1000;
 var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
@@ -10,7 +10,7 @@ function randomInRange(min: number, max: number) {
 
 export const pop = () => {
   var animationEnd = Date.now() + duration;
-  const interval: NodeJS.Timer = setInterval(function () {
+  const interval: any = setInterval(function () {
     var timeLeft = animationEnd - Date.now();
 
     if (timeLeft <= 0) {

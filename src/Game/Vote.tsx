@@ -1,7 +1,7 @@
 import "./vote.css";
 
 import { Button, Popover } from "antd";
-import { Dispatch, FC, MouseEventHandler } from "react";
+import { FC } from "react";
 
 import { RevealProps } from "../hooks/useReveal";
 import { useVote } from "../hooks/useVote";

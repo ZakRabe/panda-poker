@@ -39,6 +39,14 @@ const Home = () => {
 
       <a
         target="_blank"
+        href="https://github.com/ZakRabe/persefoni-poker"
+        rel="noreferrer"
+      >
+        <Tag color="gold">⌨️ source</Tag>
+      </a>
+
+      <a
+        target="_blank"
         href="https://firebase.google.com/docs/database/web/start"
         rel="noreferrer"
       >
@@ -61,6 +69,16 @@ const Home = () => {
 
       <a
         target="_blank"
+        href="https://github.com/vasturiano/react-force-graph"
+        rel="noreferrer"
+      >
+        <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="geekblue">
+          📈 react-force-graph v1
+        </Tag>
+      </a>
+
+      <a
+        target="_blank"
         href="https://reactrouter.com/en/6.15.0"
         rel="noreferrer"
       >
@@ -69,14 +87,6 @@ const Home = () => {
 
       <a target="_blank" href="https://reactjs.org/" rel="noreferrer">
         <Tag color="purple">♻️ react v17</Tag>
-      </a>
-
-      <a
-        target="_blank"
-        href="https://github.com/ZakRabe/persefoni-poker"
-        rel="noreferrer"
-      >
-        <Tag color="gold">⌨️ source</Tag>
       </a>
     </AppLayout>
   );

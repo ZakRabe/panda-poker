@@ -6,6 +6,7 @@ import { CONST_COMMON_OPTIONS, CONST_FIB_OPTIONS } from "../const";
 import { useGame } from "../hooks/useGame";
 import { useReveal } from "../hooks/useReveal";
 import { RoundChoice } from "../types";
+import { ForceGraphTable } from "./ForceGraphTable/ForceGraphTable";
 import Results from "./Results";
 import Table from "./Table";
 import Vote from "./Vote";
@@ -36,12 +37,13 @@ const Game = () => {
   return (
     <AppLayout>
       <Typography.Title>{game.name}</Typography.Title>
-      <div className="tables">
+      {/* <div className="tables">
         {tables.map((table, index) => (
           <Table players={table} key={`table_${index}`} revealed={revealed} />
         ))}
-      </div>
-      {revealed && <Results players={game.players} />}
+      </div> */}
+      <ForceGraphTable players={game.players} />
+      {/* {revealed && <Results players={game.players} />} */}
       <Vote
         options={options}
         revealed={revealed}

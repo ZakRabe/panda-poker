@@ -1,4 +1,8 @@
-import { CONST_CARD_BACK_IMAGE, CONST_DEFAULT_AVATAR_IMAGE } from "./assets";
+import {
+  CONST_CARD_BACK_IMAGE,
+  CONST_DEFAULT_AVATAR_IMAGE,
+  CONST_EMPTY_CARD_IMAGE,
+} from "./assets";
 import {
   CardNode,
   GraphNode,
@@ -43,14 +47,20 @@ const renderCard = (
   node: Renderable<CardNode>,
   ctx: CanvasRenderingContext2D
 ) => {
-  const { width, height } = scaleImage(CONST_CARD_BACK_IMAGE, 32);
+  const cardImage = node.revealed
+    ? CONST_EMPTY_CARD_IMAGE
+    : CONST_CARD_BACK_IMAGE;
+  const { width, height } = scaleImage(cardImage, 32);
   ctx.save();
   ctx.beginPath();
   node.__pointerRect = [node.x - width / 2, node.y - height / 2, width, height];
-  ctx.drawImage(CONST_CARD_BACK_IMAGE, ...node.__pointerRect);
+  console.log(node.revealed);
+  ctx.drawImage(cardImage, ...node.__pointerRect);
   // put text value in the center of the card
   if (node.revealed) {
-    ctx.fillText(node.id, node.x, node.y);
+    ctx.font = `bold 25px "Segoe UI"`;
+    ctx.fillStyle = "#d56f3e";
+    ctx.fillText(node.id, node.x - width + 17, node.y + 9);
   }
   ctx.closePath();
   ctx.restore();

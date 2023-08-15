@@ -17,9 +17,8 @@ export type GraphData = {
 
 // args for pointer hitboxes
 type NodeHitboxArguments<TNode extends GraphNode> = TNode extends UserNode
-  ? { __pointerArc?: [number, number, number, number, number, boolean] }
-  : // TODO: card hitbox
-    never;
+  ? { __pointerArc?: Parameters<CanvasRenderingContext2D["arc"]> }
+  : { __pointerRect?: Parameters<CanvasRenderingContext2D["rect"]> };
 
 export type Renderable<TNode extends GraphNode> = TNode & {
   x: number;
@@ -27,3 +26,9 @@ export type Renderable<TNode extends GraphNode> = TNode & {
   vx: number;
   vy: number;
 } & NodeHitboxArguments<TNode>;
+
+export const isUserNode = (node: GraphNode): node is Renderable<UserNode> =>
+  node.type === "player";
+
+export const isCardNode = (node: GraphNode): node is Renderable<CardNode> =>
+  node.type === "card";

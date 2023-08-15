@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { forceCollide } from "d3";
+import { ComponentProps, useEffect, useMemo, useRef } from "react";
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";
 
@@ -22,10 +23,19 @@ export const ForceGraphTable = ({
     return buildGraphData(players, revealed, playerData);
   }, [players, revealed, playerData]);
 
-  const [ref, { width, height }] = useElementSize();
+  const [wrapperRef, { width, height }] = useElementSize();
+  const graphRef = useRef();
+
+  useEffect(() => {
+    const graph = (graphRef as ComponentProps<typeof ForceGraph2D>["ref"])!
+      .current;
+    if (graph) {
+      graph.d3Force("collide", forceCollide(50));
+    }
+  }, [graphRef.current]);
 
   return (
-    <div style={{ flex: 1 }} ref={ref}>
+    <div style={{ flex: 1 }} ref={wrapperRef}>
       <ForceGraph2D
         width={width}
         height={height}
@@ -33,7 +43,7 @@ export const ForceGraphTable = ({
         graphData={graphData as any}
         nodeCanvasObject={nodeCanvasObject}
         nodePointerAreaPaint={nodePointerAreaPaint}
-        // nodeCanvasObjectMode={}
+        ref={graphRef as any}
       />
     </div>
   );

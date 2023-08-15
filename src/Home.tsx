@@ -24,23 +24,12 @@ const Home = () => {
             Create a Game
           </Button>
         </Link>
-        <Button type="primary" size="large" onClick={() => bonkSound.play()}>
-          BONK
-        </Button>
       </div>
 
       <h2>Recipe</h2>
 
       <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
         <Tag color="magenta">❤️</Tag>
-      </a>
-
-      <a
-        target="_blank"
-        href="https://github.com/ZakRabe/persefoni-poker"
-        rel="noreferrer"
-      >
-        <Tag color="gold">⌨️ source</Tag>
       </a>
 
       <a
@@ -85,6 +74,14 @@ const Home = () => {
 
       <a target="_blank" href="https://reactjs.org/" rel="noreferrer">
         <Tag color="purple">♻️ react v17</Tag>
+      </a>
+
+      <a
+        target="_blank"
+        href="https://github.com/ZakRabe/persefoni-poker"
+        rel="noreferrer"
+      >
+        <Tag color="gold">⌨️ source</Tag>
       </a>
     </AppLayout>
   );

@@ -1,4 +1,4 @@
-import { forceCollide } from "d3";
+import { forceCollide } from "d3-force";
 import { ComponentProps, useEffect, useMemo, useRef } from "react";
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";

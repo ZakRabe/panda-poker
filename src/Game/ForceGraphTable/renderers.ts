@@ -18,10 +18,14 @@ const renderPlayer = (
   ctx.beginPath();
   node.__pointerArc = [node.x, node.y, 16, 0, 2 * Math.PI, false];
   ctx.arc(...node.__pointerArc);
+  ctx.fillStyle = "#47271a";
+  ctx.strokeStyle = "#47271a";
+  ctx.lineWidth = 4;
   ctx.fill();
+  ctx.stroke();
   ctx.clip();
-  ctx.closePath();
   ctx.drawImage(img, node.x - width / 2, node.y - height / 2, width, height);
+  ctx.closePath();
   ctx.restore();
 };
 

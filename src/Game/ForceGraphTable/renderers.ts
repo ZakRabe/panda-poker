@@ -1,10 +1,9 @@
 import { GraphNode, Renderable, UserNode } from "./types";
 
 const scaleImage = (image: HTMLImageElement, targetSize: number) => {
-  const ratio = image.width / targetSize;
-  const width = targetSize;
+  const ratio = targetSize / image.width;
   const height = image.height * ratio;
-  return { width, height };
+  return { width: targetSize, height };
 };
 
 const renderPlayer = (

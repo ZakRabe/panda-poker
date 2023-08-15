@@ -2,8 +2,10 @@ import { useMemo } from "react";
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";
 
+import { useGamePlayers } from "../../hooks/useGamePlayers";
 import { Game } from "../../types";
-import { buildGraphData } from "./nodeHelpers";
+import { buildGraphData } from "./graphData";
+import { nodeCanvasObject, nodePointerAreaPaint } from "./renderers";
 
 type ForceGraphTableProps = {
   players: Game["players"];
@@ -14,20 +16,24 @@ export const ForceGraphTable = ({
   players,
   revealed,
 }: ForceGraphTableProps) => {
-  const graphData = useMemo(
-    () => buildGraphData(players, revealed),
-    [players, revealed]
-  );
+  const playerData = useGamePlayers(players);
+
+  const graphData = useMemo(() => {
+    return buildGraphData(players, revealed, playerData);
+  }, [players, revealed, playerData]);
 
   const [ref, { width, height }] = useElementSize();
 
   return (
     <div style={{ flex: 1 }} ref={ref}>
-      {/* <div>
-        <pre>{JSON.stringify(players, null, 4)}</pre>
-      </div> */}
-
-      <ForceGraph2D width={width} height={height} graphData={graphData} />
+      <ForceGraph2D
+        width={width}
+        height={height}
+        graphData={graphData as any}
+        nodeCanvasObject={nodeCanvasObject}
+        nodePointerAreaPaint={nodePointerAreaPaint}
+        // nodeCanvasObjectMode={}
+      />
     </div>
   );
 };

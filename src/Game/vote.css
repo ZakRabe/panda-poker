@@ -12,6 +12,7 @@
 .vote .card:hover,
 .vote .card.active {
   transform: scale(1.2);
+  z-index: 1;
 }
 
 .votePanel {
@@ -24,13 +25,15 @@
   position: fixed;
 }
 .currentVote .card:hover .front {
-  /* TODO: something nice here */
-  border-color: black;
+  border-color: #47271a;
 }
 
 .currentVote .card {
   height: 14rem;
   width: 8rem;
+}
+.currentVote .card .front {
+  font-size: 6rem;
 }
 
 .ant-popover-inner-content {

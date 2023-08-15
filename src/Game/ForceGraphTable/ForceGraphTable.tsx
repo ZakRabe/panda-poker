@@ -29,6 +29,7 @@ export const ForceGraphTable = ({
       <ForceGraph2D
         width={width}
         height={height}
+        nodeLabel="name"
         graphData={graphData as any}
         nodeCanvasObject={nodeCanvasObject}
         nodePointerAreaPaint={nodePointerAreaPaint}

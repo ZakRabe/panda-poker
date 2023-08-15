@@ -35,6 +35,8 @@ export const nodePointerAreaPaint = (
   ctx: CanvasRenderingContext2D
 ) => {
   if (node.type === "player") {
+    ctx.save();
+    ctx.beginPath();
     ctx.fillStyle = color;
     const args = node.__pointerArc;
     if (!args) {
@@ -42,6 +44,8 @@ export const nodePointerAreaPaint = (
     }
     ctx.arc(...args);
     ctx.fill();
+    ctx.closePath();
+    ctx.restore();
   }
 };
 

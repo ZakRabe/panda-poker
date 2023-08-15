@@ -17,8 +17,7 @@ const New = () => {
 
   const onCreate = () => {
     const newGameId = uuid().substr(0, 8);
-    const path = `games/${newGameId}`;
-    const gameRef = ref(database, path);
+    const gameRef = ref(database, `games/${newGameId}`);
     set(gameRef, { players: {}, name }).then(() => navigate(`/${newGameId}`));
   };
   return (
@@ -31,12 +30,13 @@ const New = () => {
           flexDirection: "column",
         }}
       >
-        <Typography.Title>New Game</Typography.Title>
+        <Typography.Title>Create a new game</Typography.Title>
 
         <div style={{ marginBottom: 10 }}>
           <label htmlFor="name">Name</label>
           <Input
             name="name"
+            id="name"
             value={name}
             onChange={({ target: { value } }) => {
               setName(value);

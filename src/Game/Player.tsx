@@ -1,17 +1,16 @@
-import './player.css'
+import "./player.css";
 
-import { onValue } from '@firebase/database'
-import { ref } from 'firebase/database'
-import { FC, useEffect, useState } from 'react'
+import { onValue } from "@firebase/database";
+import { ref } from "firebase/database";
+import { FC, useEffect, useState } from "react";
 
-import database from '../firebase'
-import { UserDto } from '../types'
+import database from "../firebase";
+import { UserDto } from "../types";
 
 export type PlayerProps = {
   id: string;
 };
 
-// TODO: Use players context to avoid requesting the data twice
 const Player: FC<PlayerProps> = ({ id }) => {
   const [player, setPlayer] = useState<UserDto>();
 

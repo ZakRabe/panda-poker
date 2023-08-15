@@ -3,7 +3,7 @@ import { Game, RoundChoice, User } from "../../types";
 import { GraphData } from "./types";
 
 // if a player hasn't selected a choice, we'll show them unlinked
-const noChoice = (playerId: string, user: User): GraphData => {
+const noChoice = (user: User): GraphData => {
   return {
     nodes: [{ type: "player", ...user }],
     links: [],
@@ -11,59 +11,56 @@ const noChoice = (playerId: string, user: User): GraphData => {
 };
 
 // each player is connected to their own unrevealed choice
-const selectedNotRevealed = (playerId: string, user: User): GraphData => {
-  const target = `${playerId}_selected`;
+const selectedNotRevealed = (user: User): GraphData => {
+  const target = `${user.id}_selected`;
   return {
     nodes: [
       { type: "player", ...user },
       { id: target, type: "card" },
     ],
-    links: [{ source: playerId, target }],
+    links: [{ source: user.id, target }],
   };
 };
 
 // the nodes for the choices are pushed into the data up front,
 // so we only need to link the player to their selection here
-const selectedRevealed = (
-  playerId: string,
-  user: User,
-  roundChoice: RoundChoice
-): GraphData => {
+const selectedRevealed = (user: User, roundChoice: RoundChoice): GraphData => {
   return {
     nodes: [{ type: "player", ...user }],
-    links: [{ source: playerId, target: roundChoice }],
+    links: [{ source: user.id, target: roundChoice }],
   };
 };
 
 export const buildGraphData = (
-  players: Game["players"] | null,
+  gameState: Game["players"] | null,
   revealed: boolean,
   playersData: Map<string, User>
 ) => {
-  if (!players) {
+  if (!gameState) {
     return { nodes: [], links: [] };
   }
   const initialData = {
     nodes: revealed
-      ? Object.values(players).map((id) => ({ id, type: "card" }))
+      ? Object.values(gameState).map((roundChoice) => ({
+          id: roundChoice,
+          type: "card",
+        }))
       : [],
     links: [],
   } as GraphData;
 
-  const graphData = Object.keys(players).reduce(
+  const graphData = Object.keys(gameState).reduce(
     ({ nodes, links }, playerId) => {
       const user = playersData.get(playerId);
       if (!user) {
         return { nodes, links };
       }
-      const roundChoice = players[playerId];
+      const roundChoice = gameState[playerId];
       const selectionData = revealed
-        ? selectedRevealed(playerId, user, roundChoice)
-        : selectedNotRevealed(playerId, user);
+        ? selectedRevealed(user, roundChoice)
+        : selectedNotRevealed(user);
       const playerData =
-        roundChoice === CONST_EMPTY_OPTION
-          ? noChoice(playerId, user)
-          : selectionData;
+        roundChoice === CONST_EMPTY_OPTION ? noChoice(user) : selectionData;
       return {
         nodes: [...nodes, ...playerData.nodes],
         links: [...links, ...playerData.links],
@@ -71,6 +68,6 @@ export const buildGraphData = (
     },
     initialData
   );
-  console.log(graphData);
+
   return graphData;
 };

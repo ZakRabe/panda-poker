@@ -29,7 +29,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-// TODO: Store list of user data in one place and expose through context
 const Root = () => {
   const [user, setUser] = useState<User>({
     id: window.localStorage.getItem("userId") ?? "",
@@ -54,8 +53,7 @@ const Root = () => {
       return;
     }
 
-    const path = `users/${user.id}`;
-    const userRef = ref(database, path);
+    const userRef = ref(database, `users/${user.id}`);
     //check for the user in the database
     get(userRef)
       .then((snapshot) => {
@@ -67,9 +65,7 @@ const Root = () => {
           });
         }
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(console.error);
     // watch the database user for changes
     return onValue(userRef, (snapshot) => {
       const dto: UserDto = snapshot.val();

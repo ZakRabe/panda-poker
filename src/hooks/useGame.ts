@@ -16,12 +16,14 @@ export const useGame = () => {
     players: {},
     revealed: false,
   });
+
   useEffect(() => {
     if (!game.name) {
       return;
     }
     document.title = game.name;
   }, [game.name]);
+
   useEffect(() => {
     if (!gameId) {
       return;
@@ -32,6 +34,7 @@ export const useGame = () => {
       setGame({ id: gameId, ...dto });
     });
   }, [gameId]);
+
   useEffect(() => {
     if (!game.id) {
       return;

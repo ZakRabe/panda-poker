@@ -15,10 +15,15 @@ export type GraphData = {
   links: { source: string; target: string }[];
 };
 
+// args for pointer hitboxes
+type NodeHitboxArguments<TNode extends GraphNode> = TNode extends UserNode
+  ? { __pointerArc?: [number, number, number, number, number, boolean] }
+  : // TODO: card hitbox
+    never;
+
 export type Renderable<TNode extends GraphNode> = TNode & {
   x: number;
   y: number;
   vx: number;
   vy: number;
-  __pointerArc?: [number, number, number, number, number, boolean];
-};
+} & NodeHitboxArguments<TNode>;

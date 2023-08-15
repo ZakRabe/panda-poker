@@ -1,6 +1,6 @@
 import { GraphNode, Renderable, UserNode } from "./types";
 
-const scale = (image: HTMLImageElement, targetSize: number) => {
+const scaleImage = (image: HTMLImageElement, targetSize: number) => {
   const ratio = image.width / targetSize;
   const width = targetSize;
   const height = image.height * ratio;
@@ -14,11 +14,11 @@ const renderPlayer = (
   const img = new Image();
   img.src = node.img ?? "/mystery.png";
 
-  const { width, height } = scale(img, 32);
+  const { width, height } = scaleImage(img, 32);
   ctx.save();
   ctx.beginPath();
-  ctx.arc(node.x, node.y, 16, 0, 2 * Math.PI, false);
   node.__pointerArc = [node.x, node.y, 16, 0, 2 * Math.PI, false];
+  ctx.arc(...node.__pointerArc);
   ctx.fill();
   ctx.clip();
   ctx.closePath();
@@ -49,6 +49,7 @@ export const nodeCanvasObject = (
   if (node.type === "player") {
     renderPlayer(node, ctx);
   } else {
+    // TODO: render card
     ctx.fillRect(node.x - 6, node.y - 4, 12, 8);
   }
 };

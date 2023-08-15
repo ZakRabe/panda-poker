@@ -1,6 +1,6 @@
-import './card.css'
+import "./card.css";
 
-import { FC } from 'react'
+import { FC } from "react";
 
 export type CardProps = {
   state: "empty" | "hidden" | "revealed";
@@ -20,7 +20,6 @@ const Card: FC<CardProps> = ({ state, children, active, onClick }) => {
           transform: state === "revealed" ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
-        {/* TODO: use .card.${STATE} .back */}
         <div className={`back ${state}`}></div>
         <div className="front">{children}</div>
       </div>

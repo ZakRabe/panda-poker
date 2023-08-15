@@ -31,9 +31,11 @@ export const ForceGraphTable = ({
     const graph = (graphRef as ComponentProps<typeof ForceGraph2D>["ref"])!
       .current;
     if (graph) {
-      graph.d3Force("collide", forceCollide(50));
+      graph.d3Force("collide", forceCollide(32));
     }
   }, []);
+
+  console.log(graphData);
 
   return (
     <div style={{ flex: 1 }} ref={wrapperRef}>

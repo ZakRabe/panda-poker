@@ -60,7 +60,8 @@ const renderCard = (
   if (node.revealed) {
     ctx.font = `bold 25px "Segoe UI"`;
     ctx.fillStyle = "#d56f3e";
-    ctx.fillText(node.id, node.x - width + 17, node.y + 9);
+    const textSize = ctx.measureText(node.id);
+    ctx.fillText(node.id, node.x - textSize.width / 2, node.y + 9);
   }
   ctx.closePath();
   ctx.restore();

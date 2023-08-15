@@ -39,9 +39,10 @@ export const buildGraphData = (
   if (!gameState) {
     return { nodes: [], links: [] };
   }
+  const uniqueChoices = Array.from(new Set(Object.values(gameState)));
   const initialData = {
     nodes: revealed
-      ? Object.values(gameState).map((roundChoice) => ({
+      ? uniqueChoices.map((roundChoice) => ({
           id: roundChoice,
           type: "card",
           revealed: true,

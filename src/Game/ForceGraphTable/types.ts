@@ -7,6 +7,7 @@ export type UserNode = User & {
 export type CardNode = {
   id: string;
   type: "card";
+  revealed: boolean;
 };
 
 export type GraphNode = CardNode | UserNode;

@@ -27,12 +27,13 @@ export const ForceGraphTable = ({
   const graphRef = useRef();
 
   useEffect(() => {
+    // really messy getting the type from the ref otherwise. so just assert
     const graph = (graphRef as ComponentProps<typeof ForceGraph2D>["ref"])!
       .current;
     if (graph) {
       graph.d3Force("collide", forceCollide(50));
     }
-  }, [graphRef.current]);
+  }, []);
 
   return (
     <div style={{ flex: 1 }} ref={wrapperRef}>

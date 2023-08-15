@@ -16,7 +16,7 @@ const selectedNotRevealed = (user: User): GraphData => {
   return {
     nodes: [
       { type: "player", ...user },
-      { id: target, type: "card" },
+      { id: target, type: "card", revealed: false },
     ],
     links: [{ source: user.id, target }],
   };
@@ -44,6 +44,7 @@ export const buildGraphData = (
       ? Object.values(gameState).map((roundChoice) => ({
           id: roundChoice,
           type: "card",
+          revealed: true,
         }))
       : [],
     links: [],

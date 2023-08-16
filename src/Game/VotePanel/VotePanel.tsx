@@ -21,7 +21,7 @@ const VotePanel: FC<VoteProps> = ({
   toggleRevealed,
 }) => {
   const [vote, castVote] = useVote();
-  const { isBonking, setBonking } = useContext(BonkContext);
+  const { setBonking } = useContext(BonkContext);
 
   const content = (
     <div className="vote">

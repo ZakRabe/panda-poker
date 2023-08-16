@@ -1,5 +1,13 @@
 import { forceCollide } from "d3-force";
-import { ComponentProps, useContext, useEffect, useMemo, useRef } from "react";
+import { isEqual } from "lodash";
+import {
+  ComponentProps,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";
 
@@ -18,11 +26,22 @@ type ForceGraphTableProps = {
 
 const ForceGraphTable = ({ players, revealed }: ForceGraphTableProps) => {
   const playerData = usePlayers(players);
+
+  // avoid bonks updating the graph
+  const [stablePlayers, setStablePlayers] = useState(players);
+  useEffect(() => {
+    if (isEqual(players, stablePlayers)) {
+      return;
+    }
+    setStablePlayers(players);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [players]);
+
   const { isBonking, setBonking, bonkPlayer } = useContext(BonkContext);
 
   const graphData = useMemo(
-    () => buildGraphData(players, revealed, playerData),
-    [players, revealed, playerData]
+    () => buildGraphData(stablePlayers, revealed, playerData),
+    [stablePlayers, revealed, playerData]
   );
 
   const [wrapperRef, { width, height }] = useElementSize();

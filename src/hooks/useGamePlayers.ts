@@ -3,7 +3,7 @@ import { isEqual } from "lodash";
 import { useEffect, useState } from "react";
 
 import database from "../firebase";
-import { Game, UserDto } from "../types";
+import { Game, User, UserDto } from "../types";
 
 export const usePlayerIds = (playerList: Game["players"]) => {
   const [playerIds, setPlayerIds] = useState<string[]>([]);
@@ -24,7 +24,7 @@ export const usePlayerIds = (playerList: Game["players"]) => {
 };
 
 export const usePlayers = (playerList: Game["players"]) => {
-  const [players, setPlayers] = useState(new Map());
+  const [players, setPlayers] = useState<Map<string, User>>(new Map());
   const playerIds = usePlayerIds(playerList);
 
   useEffect(() => {

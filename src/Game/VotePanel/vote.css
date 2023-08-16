@@ -23,6 +23,9 @@
   margin-top: 20px;
   padding: 10px;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .currentVote .card:hover .front {
   border-color: #47271a;

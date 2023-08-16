@@ -1,14 +1,34 @@
 import { onValue, ref, Unsubscribe } from "firebase/database";
+import { isEqual } from "lodash";
 import { useEffect, useState } from "react";
 
 import database from "../firebase";
 import { Game, UserDto } from "../types";
 
-export const useGamePlayers = (playerList: Game["players"]) => {
+const usePlayerIds = (playerList: Game["players"]) => {
+  const [playerIds, setPlayerIds] = useState<string[]>([]);
+
+  useEffect(
+    () => {
+      const newPlayerIds = Object.keys(playerList);
+      newPlayerIds.sort();
+      if (isEqual(newPlayerIds, playerIds)) {
+        return;
+      }
+      setPlayerIds(newPlayerIds);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [playerList]
+  );
+  return playerIds;
+};
+
+export const usePlayers = (playerList: Game["players"]) => {
   const [players, setPlayers] = useState(new Map());
+  const playerIds = usePlayerIds(playerList);
+
   useEffect(() => {
     const unsubscribers: Unsubscribe[] = [];
-    const playerIds = playerList ? Object.keys(playerList) : [];
     playerIds.forEach((playerId) => {
       const playerRef = ref(database, `users/${playerId}`);
       const unsubscribe = onValue(playerRef, (snapshot) => {
@@ -25,7 +45,7 @@ export const useGamePlayers = (playerList: Game["players"]) => {
     return () => {
       unsubscribers.forEach((unsubscribe) => unsubscribe());
     };
-  }, [playerList]);
+  }, [playerIds]);
 
   return players;
 };

@@ -54,7 +54,7 @@ const renderCard = (
   ctx.save();
   ctx.beginPath();
   node.__pointerRect = [node.x - width / 2, node.y - height / 2, width, height];
-  console.log(node.revealed);
+
   ctx.drawImage(cardImage, ...node.__pointerRect);
   // put text value in the center of the card
   if (node.revealed) {

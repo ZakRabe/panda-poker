@@ -12,13 +12,9 @@ const noChoice = (user: User): GraphData => {
 
 // each player is connected to their own unrevealed choice
 const selectedNotRevealed = (user: User): GraphData => {
-  const target = `${user.id}_selected`;
   return {
-    nodes: [
-      { type: "player", ...user },
-      { id: target, type: "card", revealed: false },
-    ],
-    links: [{ source: user.id, target }],
+    nodes: [{ type: "player", ...user }],
+    links: [{ source: user.id, target: "selected" }],
   };
 };
 
@@ -31,6 +27,8 @@ const selectedRevealed = (user: User, roundChoice: RoundChoice): GraphData => {
   };
 };
 
+const selectedChoice = { id: "selected", type: "card", revealed: false };
+
 export const buildGraphData = (
   gameState: Game["players"] | null,
   revealed: boolean,
@@ -39,15 +37,15 @@ export const buildGraphData = (
   if (!gameState) {
     return { nodes: [], links: [] };
   }
-  const uniqueChoices = Array.from(new Set(Object.values(gameState)));
+  const uniqueChoices = Array.from(new Set(Object.values(gameState)))
+    .filter((value) => value !== CONST_EMPTY_OPTION)
+    .map((roundChoice) => ({
+      id: roundChoice,
+      type: "card",
+      revealed: true,
+    }));
   const initialData = {
-    nodes: revealed
-      ? uniqueChoices.map((roundChoice) => ({
-          id: roundChoice,
-          type: "card",
-          revealed: true,
-        }))
-      : [],
+    nodes: revealed ? uniqueChoices : [selectedChoice],
     links: [],
   } as GraphData;
 

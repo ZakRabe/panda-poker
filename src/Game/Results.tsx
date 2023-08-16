@@ -13,7 +13,9 @@ const ProgressRing: FC<{
 }> = ({ radius, stroke, progress, average }) => {
   const normalizedRadius = radius - stroke * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
+  const strokeDashoffset = isNaN(progress)
+    ? 0
+    : circumference - (progress / 100) * circumference;
 
   return (
     <div className="progress-ring">

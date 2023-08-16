@@ -25,63 +25,65 @@ const Home = () => {
         </Link>
       </div>
 
-      <h2>Recipe</h2>
+      <div className="recipe">
+        <h2>Recipe</h2>
 
-      <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
-        <Tag color="magenta">❤️</Tag>
-      </a>
+        <a target="_blank" href="https://github.com/ZakRabe" rel="noreferrer">
+          <Tag color="magenta">❤️</Tag>
+        </a>
 
-      <a
-        target="_blank"
-        href="https://firebase.google.com/docs/database/web/start"
-        rel="noreferrer"
-      >
-        <Tag color="red">🔥 firebase v9</Tag>
-      </a>
+        <a
+          target="_blank"
+          href="https://firebase.google.com/docs/database/web/start"
+          rel="noreferrer"
+        >
+          <Tag color="red">🔥 firebase v9</Tag>
+        </a>
 
-      <a target="_blank" href="https://4x.ant.design/" rel="noreferrer">
-        <Tag color="green">🐜 ant design v4</Tag>
-      </a>
+        <a target="_blank" href="https://4x.ant.design/" rel="noreferrer">
+          <Tag color="green">🐜 ant design v4</Tag>
+        </a>
 
-      <a
-        target="_blank"
-        href="https://github.com/catdad/canvas-confetti"
-        rel="noreferrer"
-      >
-        <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="cyan">
-          🎉 canvas-confetti v1
-        </Tag>
-      </a>
+        <a
+          target="_blank"
+          href="https://github.com/catdad/canvas-confetti"
+          rel="noreferrer"
+        >
+          <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="cyan">
+            🎉 canvas-confetti v1
+          </Tag>
+        </a>
 
-      <a
-        target="_blank"
-        href="https://github.com/vasturiano/react-force-graph"
-        rel="noreferrer"
-      >
-        <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="geekblue">
-          📈 react-force-graph v1
-        </Tag>
-      </a>
+        <a
+          target="_blank"
+          href="https://github.com/vasturiano/react-force-graph"
+          rel="noreferrer"
+        >
+          <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="geekblue">
+            📈 react-force-graph v1
+          </Tag>
+        </a>
 
-      <a
-        target="_blank"
-        href="https://reactrouter.com/en/6.15.0"
-        rel="noreferrer"
-      >
-        <Tag color="blue">🚌 react-router v6</Tag>
-      </a>
+        <a
+          target="_blank"
+          href="https://reactrouter.com/en/6.15.0"
+          rel="noreferrer"
+        >
+          <Tag color="blue">🚌 react-router v6</Tag>
+        </a>
 
-      <a target="_blank" href="https://reactjs.org/" rel="noreferrer">
-        <Tag color="purple">♻️ react v17</Tag>
-      </a>
+        <a target="_blank" href="https://reactjs.org/" rel="noreferrer">
+          <Tag color="purple">♻️ react v17</Tag>
+        </a>
 
-      <a
-        target="_blank"
-        href="https://github.com/ZakRabe/persefoni-poker"
-        rel="noreferrer"
-      >
-        <Tag color="gold">⌨️ source</Tag>
-      </a>
+        <a
+          target="_blank"
+          href="https://github.com/ZakRabe/persefoni-poker"
+          rel="noreferrer"
+        >
+          <Tag color="gold">⌨️ source</Tag>
+        </a>
+      </div>
     </AppLayout>
   );
 };

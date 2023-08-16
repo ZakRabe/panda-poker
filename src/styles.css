@@ -18,3 +18,7 @@ h5 {
 .ant-layout {
   background-color: #f6f4e8 !important;
 }
+
+.recipe a {
+  display: inline-block;
+}

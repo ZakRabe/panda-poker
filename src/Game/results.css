@@ -14,14 +14,16 @@
 
 .progress-ring .average {
   font-weight: 700;
-  font-size: 5rem;
-  line-height: 0.7;
+  font-size: 4rem;
   color: #d56f3e;
+  margin-bottom: 30px;
 }
 
 .progress-ring .consensus {
   font-size: 1.5rem;
   color: "#47271A";
+  display: inline-block;
+  margin-top: 15px;
 }
 
 .progress-ring svg {

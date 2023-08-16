@@ -55,7 +55,7 @@ const Results: FC<Pick<Game, "players">> = ({ players }) => {
         average={average}
         progress={consensus}
         radius={125}
-        stroke={10}
+        stroke={15}
       />
     </div>
   );

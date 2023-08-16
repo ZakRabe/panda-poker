@@ -4,31 +4,35 @@ import { Typography } from "antd";
 
 import AppLayout from "../AppLayout";
 import { CONST_COMMON_OPTIONS, CONST_FIB_OPTIONS } from "../const";
+import { BonkContext, useBonk } from "../hooks/useBonk";
 import { useGame } from "../hooks/useGame";
 import { useReveal } from "../hooks/useReveal";
-import { ForceGraphTable } from "./ForceGraphTable/ForceGraphTable";
+import ForceGraphTable from "./ForceGraphTable/ForceGraphTable";
 import Results from "./Results";
-import Vote from "./Vote";
+import VotePanel from "./VotePanel/VotePanel";
 
 const options = [...CONST_FIB_OPTIONS, ...CONST_COMMON_OPTIONS];
 const Game = () => {
   const game = useGame();
   const { revealed, countdown, toggleRevealed } = useReveal(game);
+  const { isBonking, setBonking, bonkPlayer } = useBonk(game);
 
   return (
-    <AppLayout>
-      <Typography.Title>{game.name}</Typography.Title>
+    <BonkContext.Provider value={{ isBonking, setBonking, bonkPlayer }}>
+      <AppLayout className={`${isBonking ? "bonk-active" : ""}`}>
+        <Typography.Title>{game.name}</Typography.Title>
 
-      <ForceGraphTable players={game.players} revealed={revealed} />
-      {revealed && <Results players={game.players} />}
+        <ForceGraphTable players={game.players} revealed={revealed} />
+        {revealed && <Results players={game.players} />}
 
-      <Vote
-        options={options}
-        revealed={revealed}
-        toggleRevealed={toggleRevealed}
-        countdown={countdown}
-      />
-    </AppLayout>
+        <VotePanel
+          options={options}
+          revealed={revealed}
+          toggleRevealed={toggleRevealed}
+          countdown={countdown}
+        />
+      </AppLayout>
+    </BonkContext.Provider>
   );
 };
 

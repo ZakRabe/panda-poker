@@ -15,6 +15,7 @@ export const useGame = () => {
     name: "Loading...",
     players: {},
     revealed: false,
+    bonks: {},
   });
 
   useEffect(() => {

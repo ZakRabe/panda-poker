@@ -2,3 +2,9 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+.bonk-active .force-graph-container,
+.bonk-active .clickable {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='128px' width='128px' style='fill:black;font-size:64px;'><text y='50%'>🔨</text></svg>"),
+    auto !important;
+}

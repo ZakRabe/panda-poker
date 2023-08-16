@@ -1,24 +1,27 @@
 import "./vote.css";
 
 import { Button, Popover } from "antd";
-import { FC } from "react";
+import { FC, useContext } from "react";
 
-import { RevealProps } from "../hooks/useReveal";
-import { useVote } from "../hooks/useVote";
-import { RoundChoice } from "../types";
-import Card from "./Card";
+import { BonkContext } from "../../hooks/useBonk";
+import { RevealProps } from "../../hooks/useReveal";
+import { useVote } from "../../hooks/useVote";
+import { RoundChoice } from "../../types";
+import Card from "../Card";
+import BonkButton from "./BonkButton";
 
 export type VoteProps = RevealProps & {
   options: RoundChoice[];
 };
 
-const Vote: FC<VoteProps> = ({
+const VotePanel: FC<VoteProps> = ({
   options,
   countdown,
   revealed,
   toggleRevealed,
 }) => {
   const [vote, castVote] = useVote();
+  const { isBonking, setBonking } = useContext(BonkContext);
 
   const content = (
     <div className="vote">
@@ -38,7 +41,7 @@ const Vote: FC<VoteProps> = ({
   return (
     <>
       <div className="votePanel">
-        <div>
+        <div style={{ display: "flex" }}>
           <div className="currentVote">
             <Popover placement="topLeft" content={content}>
               <div>
@@ -46,7 +49,10 @@ const Vote: FC<VoteProps> = ({
               </div>
             </Popover>
           </div>
-          <div className="actions"></div>
+          <div className="actions">
+            <BonkButton setBonking={setBonking} />
+            {/* <GavelButton /> */}
+          </div>
         </div>
         <div className="gameOptions">
           {
@@ -64,4 +70,4 @@ const Vote: FC<VoteProps> = ({
   );
 };
 
-export default Vote;
+export default VotePanel;

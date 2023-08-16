@@ -5,12 +5,12 @@ import EditUser from "./EditUser";
 import UserContext from "./UserContext";
 
 // TODO: Move styles to CSS
-const AppLayout: FC = ({ children }) => {
+const AppLayout: FC<{ className?: string }> = ({ children, className }) => {
   const { name, img } = useContext(UserContext);
   const [isProfileOpen, setProfileOpen] = useState(false);
   return (
     <>
-      <Layout>
+      <Layout className={className}>
         <Layout.Header
           style={{
             display: "flex",
@@ -48,16 +48,14 @@ const AppLayout: FC = ({ children }) => {
             {!img && !name && "🚀"}
           </Button>
         </Layout.Header>
-        <Layout.Content style={{ padding: "0 50px" }}>
-          <Layout.Content
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: "calc(100vh - 64px)",
-            }}
-          >
-            {children}
-          </Layout.Content>
+        <Layout.Content
+          style={{
+            padding: "0 50px",
+            margin: 0,
+            minHeight: "calc(100vh - 64px)",
+          }}
+        >
+          {children}
         </Layout.Content>
       </Layout>
 

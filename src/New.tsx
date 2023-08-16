@@ -18,7 +18,9 @@ const New = () => {
   const onCreate = () => {
     const newGameId = uuid().substr(0, 8);
     const gameRef = ref(database, `games/${newGameId}`);
-    set(gameRef, { players: {}, name }).then(() => navigate(`/${newGameId}`));
+    set(gameRef, { players: {}, name, bonks: {} }).then(() =>
+      navigate(`/${newGameId}`)
+    );
   };
   return (
     <AppLayout>

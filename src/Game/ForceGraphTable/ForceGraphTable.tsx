@@ -1,23 +1,24 @@
 import { forceCollide } from "d3-force";
-import { ComponentProps, useEffect, useMemo, useRef } from "react";
+import { ComponentProps, useContext, useEffect, useMemo, useRef } from "react";
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";
 
+import { bonkSound } from "../../bonk";
+import { BonkContext } from "../../hooks/useBonk";
 import { usePlayers } from "../../hooks/useGamePlayers";
 import { Game } from "../../types";
 import { buildGraphData } from "./graphData";
 import { nodeCanvasObject, nodePointerAreaPaint } from "./renderers";
+import { GraphNode } from "./types";
 
 type ForceGraphTableProps = {
   players: Game["players"];
   revealed: boolean;
 };
 
-export const ForceGraphTable = ({
-  players,
-  revealed,
-}: ForceGraphTableProps) => {
+const ForceGraphTable = ({ players, revealed }: ForceGraphTableProps) => {
   const playerData = usePlayers(players);
+  const { isBonking, setBonking, bonkPlayer } = useContext(BonkContext);
 
   const graphData = useMemo(
     () => buildGraphData(players, revealed, playerData),
@@ -36,6 +37,15 @@ export const ForceGraphTable = ({
     }
   }, []);
 
+  const onNodeClick = (node: GraphNode) => {
+    if (isBonking) {
+      console.log({ node });
+      setBonking(false);
+      bonkSound.play();
+      bonkPlayer(node.id);
+    }
+  };
+
   return (
     <div style={{ flex: 1 }} ref={wrapperRef}>
       <ForceGraph2D
@@ -44,9 +54,12 @@ export const ForceGraphTable = ({
         nodeLabel="name"
         graphData={graphData as any}
         nodeCanvasObject={nodeCanvasObject}
+        onNodeClick={onNodeClick}
         nodePointerAreaPaint={nodePointerAreaPaint}
         ref={graphRef as any}
       />
     </div>
   );
 };
+
+export default ForceGraphTable;

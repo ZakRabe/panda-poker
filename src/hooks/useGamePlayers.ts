@@ -10,7 +10,7 @@ const usePlayerIds = (playerList: Game["players"]) => {
 
   useEffect(
     () => {
-      const newPlayerIds = Object.keys(playerList);
+      const newPlayerIds = Object.keys(playerList ?? []);
       newPlayerIds.sort();
       if (isEqual(newPlayerIds, playerIds)) {
         return;

@@ -45,7 +45,11 @@ export const buildGraphData = (
       revealed: true,
     }));
   const initialData = {
-    nodes: revealed ? uniqueChoices : [selectedChoice],
+    nodes: revealed
+      ? uniqueChoices
+      : uniqueChoices.length > 0
+      ? [selectedChoice]
+      : [],
     links: [],
   } as GraphData;
 

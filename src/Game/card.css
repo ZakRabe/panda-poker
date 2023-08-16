@@ -51,7 +51,7 @@
 
 .back {
   background-color: #000;
-  background-image: url("./background.jpg");
+  background-image: url("./cardBackground.jpg");
   background-repeat: repeat;
   background-size: 100px;
 }

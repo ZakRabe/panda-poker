@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import database from "../firebase";
 import { Game, UserDto } from "../types";
 
-const usePlayerIds = (playerList: Game["players"]) => {
+export const usePlayerIds = (playerList: Game["players"]) => {
   const [playerIds, setPlayerIds] = useState<string[]>([]);
 
   useEffect(

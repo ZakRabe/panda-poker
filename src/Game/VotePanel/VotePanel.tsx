@@ -1,4 +1,4 @@
-import "./vote.css";
+import "./votePanel.css";
 
 import { Button, Popover } from "antd";
 import { FC, useContext } from "react";

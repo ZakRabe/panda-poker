@@ -13,7 +13,7 @@ const New = () => {
     document.title = "New Game";
   }, []);
   const navigate = useNavigate();
-  const [name, setName] = useState("New Panda Poker Game");
+  const [name, setName] = useState("New panda-poker Game");
 
   const onCreate = () => {
     const newGameId = uuid().substr(0, 8);

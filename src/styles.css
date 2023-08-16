@@ -22,3 +22,6 @@ h5 {
 .recipe a {
   display: inline-block;
 }
+
+.ant-layout-header h1 {
+}

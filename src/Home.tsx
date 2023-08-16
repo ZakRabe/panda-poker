@@ -8,7 +8,7 @@ import { pop } from "./confetti";
 // TODO: Styles to CSS
 const Home = () => {
   useEffect(() => {
-    document.title = "Panda Poker";
+    document.title = "panda-poker";
   }, []);
   return (
     <AppLayout>
@@ -78,7 +78,7 @@ const Home = () => {
 
         <a
           target="_blank"
-          href="https://github.com/ZakRabe/persefoni-poker"
+          href="https://github.com/ZakRabe/panda-poker"
           rel="noreferrer"
         >
           <Tag color="gold">⌨️ source</Tag>

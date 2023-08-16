@@ -53,7 +53,11 @@ const VotePanel: FC<VoteProps> = ({
             className="actions"
             style={{ display: "flex", flexDirection: "column", gap: 20 }}
           >
-            <Button type="primary" onClick={toggleRevealed}>
+            <Button
+              type="primary"
+              disabled={countdown > 0}
+              onClick={toggleRevealed}
+            >
               {countdown > 0 ? countdown : revealed ? "Reset" : "Reveal"}
             </Button>
             <BonkButton setBonking={setBonking} />

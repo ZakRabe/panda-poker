@@ -9,7 +9,7 @@ import { usePlayers } from "../../hooks/useGamePlayers";
 import { Game } from "../../types";
 import { buildGraphData } from "./graphData";
 import { nodeCanvasObject, nodePointerAreaPaint } from "./renderers";
-import { GraphNode } from "./types";
+import { GraphNode, isUserNode } from "./types";
 
 type ForceGraphTableProps = {
   players: Game["players"];
@@ -38,8 +38,7 @@ const ForceGraphTable = ({ players, revealed }: ForceGraphTableProps) => {
   }, []);
 
   const onNodeClick = (node: GraphNode) => {
-    if (isBonking) {
-      console.log({ node });
+    if (isBonking && isUserNode(node)) {
       setBonking(false);
       bonkSound.play();
       bonkPlayer(node.id);

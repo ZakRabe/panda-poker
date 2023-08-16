@@ -24,7 +24,7 @@ const AppLayout: FC<{ className?: string }> = ({ children, className }) => {
           >
             <img alt="logo" src="/logo.png" style={{ height: "100%" }} />
           </a>
-          <Typography.Title style={{ margin: 0, color: "white" }}>
+          <Typography.Title style={{ margin: 0, color: "#47271a" }}>
             Panda Poker
           </Typography.Title>
 

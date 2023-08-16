@@ -59,7 +59,7 @@ const Home = () => {
           href="https://github.com/vasturiano/react-force-graph"
           rel="noreferrer"
         >
-          <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="geekblue">
+          <Tag style={{ cursor: "pointer" }} color="geekblue">
             📈 react-force-graph v1
           </Tag>
         </a>

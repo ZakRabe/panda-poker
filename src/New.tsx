@@ -24,33 +24,20 @@ const New = () => {
   };
   return (
     <AppLayout>
-      <div
-        style={{
-          width: "50%",
-          margin: "auto",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <div className="create-game">
         <Typography.Title>Create a new game</Typography.Title>
 
-        <div style={{ marginBottom: 10 }}>
-          <label htmlFor="name">Name</label>
-          <Input
-            name="name"
-            id="name"
-            value={name}
-            onChange={({ target: { value } }) => {
-              setName(value);
-            }}
-          />
-        </div>
-        <Button
-          size="large"
-          type="primary"
-          style={{ marginLeft: "auto" }}
-          onClick={onCreate}
-        >
+        <label htmlFor="name">Name</label>
+        <Input
+          name="name"
+          id="name"
+          value={name}
+          onChange={({ target: { value } }) => {
+            setName(value);
+          }}
+        />
+
+        <Button size="large" type="primary" onClick={onCreate}>
           Create
         </Button>
       </div>

@@ -26,6 +26,13 @@
   transform-style: preserve-3d;
 }
 
+.inner.revealed {
+  transform: rotateY(180deg);
+}
+.inner:not(.revealed) {
+  transform: rotateY(0deg);
+}
+
 .front,
 .back {
   border-radius: 0.8rem;

@@ -23,5 +23,68 @@ h5 {
   display: inline-block;
 }
 
-.ant-layout-header h1 {
+.ant-layout-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ant-layout-header .logo {
+  height: calc(100% - 15px);
+  margin: 15px;
+  line-height: 1;
+}
+
+.ant-layout-header .logo img {
+  height: 100%;
+}
+
+.ant-layout-header .title {
+  margin: 0;
+  color: #47271a;
+}
+
+.ant-layout-header .profile {
+  margin-left: auto;
+}
+
+.ant-layout-header .profile .avatar {
+  width: 25px;
+  height: 25px;
+}
+
+.ant-layout-header .profile img + span {
+  margin-left: 5px;
+}
+
+.ant-layout-content {
+  padding: 0 50px;
+  margin: 0;
+  min-height: calc(100vh - 64px) !important;
+}
+
+img.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-modal .avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.new-game {
+  text-align: center;
+  margin: 50px;
+}
+
+.create-game {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-game input {
+  margin-bottom: 10px;
 }

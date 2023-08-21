@@ -14,12 +14,7 @@ const Card: FC<CardProps> = ({ state, children, active, onClick }) => {
       className={`card ${state} ${active ? "active" : ""}`}
       onClick={onClick}
     >
-      <div
-        className="inner"
-        style={{
-          transform: state === "revealed" ? "rotateY(180deg)" : "rotateY(0deg)",
-        }}
-      >
+      <div className={`inner ${state === "revealed" ? "revealed" : ""}`}>
         <div className={`back ${state}`}></div>
         <div className="front">{children}</div>
       </div>

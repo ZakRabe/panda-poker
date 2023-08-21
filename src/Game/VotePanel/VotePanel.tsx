@@ -40,31 +40,25 @@ const VotePanel: FC<VoteProps> = ({
 
   return (
     <>
-      <div className="votePanel">
-        <div style={{ display: "flex", gap: 20 }}>
-          <div className="currentVote">
-            <Popover placement="topLeft" content={content}>
-              <div>
-                <Card state="revealed">{vote}</Card>
-              </div>
-            </Popover>
-          </div>
-          <div
-            className="actions"
-            style={{ display: "flex", flexDirection: "column", gap: 20 }}
-          >
-            <Button
-              type="primary"
-              disabled={countdown > 0}
-              onClick={toggleRevealed}
-            >
-              {countdown > 0 ? countdown : revealed ? "Reset" : "Reveal"}
-            </Button>
-            <BonkButton setBonking={setBonking} />
-            {/* <GavelButton /> */}
-          </div>
+      <div className="vote-panel">
+        <div className="current-vote">
+          <Popover placement="topLeft" content={content}>
+            <div>
+              <Card state="revealed">{vote}</Card>
+            </div>
+          </Popover>
         </div>
-        <div className="gameOptions"></div>
+        <div className="actions">
+          <Button
+            type="primary"
+            disabled={countdown > 0}
+            onClick={toggleRevealed}
+          >
+            {countdown > 0 ? countdown : revealed ? "Reset" : "Reveal"}
+          </Button>
+          <BonkButton setBonking={setBonking} />
+          {/* <GavelButton /> */}
+        </div>
       </div>
     </>
   );

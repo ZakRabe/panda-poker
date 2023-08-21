@@ -15,7 +15,7 @@
   z-index: 1;
 }
 
-.votePanel {
+.vote-panel {
   background-color: #f6f4e8;
   bottom: 0;
   justify-content: center;
@@ -24,21 +24,27 @@
   padding: 10px;
   position: fixed;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
 }
-.currentVote .card:hover .front {
+.current-vote .card:hover .front {
   border-color: #47271a;
 }
 
-.currentVote .card {
+.current-vote .card {
   height: 14rem;
   width: 8rem;
 }
-.currentVote .card .front {
+.current-vote .card .front {
   font-size: 6rem;
 }
 
 .ant-popover-inner-content {
   background-color: #f6f4e8;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

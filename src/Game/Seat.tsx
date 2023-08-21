@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC } from "react";
 
-import { CONST_EMPTY_OPTION } from '../const'
-import { RoundChoice } from '../types'
-import Card, { CardProps } from './Card'
-import Player from './Player'
+import { CONST_EMPTY_OPTION } from "../const";
+import { RoundChoice } from "../types";
+import Card, { CardProps } from "./Card";
+import Player from "./Player";
 
 export type SeatProps = {
   playerId: string;
@@ -12,7 +12,7 @@ export type SeatProps = {
 };
 const Seat: FC<SeatProps> = ({ playerId, choice, state }) => {
   return (
-    <div className="seat" style={{ display: "flex", alignItems: "center" }}>
+    <div className="seat">
       <Player id={playerId} />
       <Card state={state}>{choice}</Card>
     </div>

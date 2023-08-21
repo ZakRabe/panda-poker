@@ -17,7 +17,7 @@ const Home = () => {
         Why pay for premium when you could just... <strong>not</strong> do that?
       </p>
 
-      <div style={{ textAlign: "center" }}>
+      <div className="new-game">
         <Link to="/new">
           <Button type="primary" size="large">
             Create a Game
@@ -49,7 +49,7 @@ const Home = () => {
           href="https://github.com/catdad/canvas-confetti"
           rel="noreferrer"
         >
-          <Tag style={{ cursor: "pointer" }} onMouseOver={pop} color="cyan">
+          <Tag onMouseOver={pop} color="cyan">
             🎉 canvas-confetti v1
           </Tag>
         </a>
@@ -59,9 +59,7 @@ const Home = () => {
           href="https://github.com/vasturiano/react-force-graph"
           rel="noreferrer"
         >
-          <Tag style={{ cursor: "pointer" }} color="geekblue">
-            📈 react-force-graph v1
-          </Tag>
+          <Tag color="geekblue">📈 react-force-graph v1</Tag>
         </a>
 
         <a

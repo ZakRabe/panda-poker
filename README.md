@@ -9,3 +9,20 @@ free planning poker for the homies
 - BONK people who are AFK and need to vote.
 - Calculate average vote and group consensus.
 - Share notes in the Game. URLs are parsed and turned into links.
+
+## Setup
+
+1. `yarn install`
+2. add environment variables for youir firebase realtime database
+
+```
+REACT_APP_FIREBASE_API_KEY
+REACT_APP_FIREBASE_AUTH_DOMAIN
+REACT_APP_FIREBASE_DATABASE_URL
+REACT_APP_FIREBASE_PROJECT_ID
+REACT_APP_FIREBASE_STORAGE_BUCKET
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+REACT_APP_FIREBASE_APP_ID
+```
+
+3. `yarn start`

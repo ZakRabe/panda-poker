@@ -14,12 +14,7 @@ export type VoteProps = RevealProps;
 
 const options = [...CONST_FIB_OPTIONS, ...CONST_COMMON_OPTIONS];
 
-const VotePanel: FC<VoteProps> = ({
-  // options,
-  countdown,
-  revealed,
-  toggleRevealed,
-}) => {
+const VotePanel: FC<VoteProps> = ({ countdown, revealed, toggleRevealed }) => {
   const [vote, castVote] = useVote();
   const { setBonking } = useContext(BonkContext);
 

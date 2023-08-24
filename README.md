@@ -9,6 +9,7 @@ free planning poker for the homies
 - BONK people who are AFK and need to vote.
 - Calculate votes average and group consensus.
 - Share notes in the Game. URLs are parsed and turned into links.
+- 🎉🎉🎉
 
 ## Setup
 

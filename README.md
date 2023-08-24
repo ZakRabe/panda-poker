@@ -8,7 +8,7 @@ free planning poker for the homies
 - Each player can vote in secret, then all votes are revealed to the group. 
 - BONK people who are AFK and need to vote.
 - Calculate votes average and group consensus.
-- Share notes in the Game. URLs are parsed and turned into links.
+- Share Notes in the Game. URLs in Notes are parsed into links.
 - 🎉🎉🎉
 
 ## Setup

@@ -2,8 +2,8 @@
 planning poker for the homies
 
 ## Features
-- Customize your avatar and display name - no login required
 - Create linkable Games for sprint planning poker activities
+- Customize your avatar and display name - no login required
 - View relationships between votes and players with an interactive force graph
 - Lock in a secret vote, then reveal all votes to players
 - BONK people who are AFK

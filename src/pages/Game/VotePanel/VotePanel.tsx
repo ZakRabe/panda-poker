@@ -52,7 +52,6 @@ const VotePanel: FC<VoteProps> = ({ countdown, revealed, toggleRevealed }) => {
             {countdown > 0 ? countdown : revealed ? "Reset" : "Reveal"}
           </Button>
           <BonkButton setBonking={setBonking} />
-          {/* <GavelButton /> */}
         </div>
       </div>
     </>

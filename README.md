@@ -2,10 +2,10 @@
 free planning poker for the homies
 
 ## Features
-- Create linkable Games for sprint planning poker activities.
+- Create linkable Games for sprint planning poker.
 - Customize your avatar and display name - no login required.
-- View relationships between votes and players with an interactive force graph.
-- Each player can vote in secret, then reveal all votes to the group. 
+- View relationships between votes and players in an interactive force graph.
+- Each player can vote in secret, then all votes are revealed to the group. 
 - BONK people who are AFK and need to vote.
 - Calculate average vote and group consensus.
 - Share notes in the Game. URLs are parsed and turned into links.

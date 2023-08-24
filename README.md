@@ -1,5 +1,5 @@
 # panda-poker
-planning poker for the homies
+free planning poker for the homies
 
 ## Features
 - Create linkable Games for sprint planning poker activities.

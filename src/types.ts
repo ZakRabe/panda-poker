@@ -24,5 +24,6 @@ export type GameDto = {
   revealed: boolean;
   players: Record<string, RoundChoice>;
   bonks: Record<string, boolean>;
+  notes: string[];
 };
 export type Game = GameDto & Model;

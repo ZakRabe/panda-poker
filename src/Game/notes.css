@@ -1,0 +1,27 @@
+.notes-wrapper {
+  position: relative;
+}
+.notes-panel {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #d0cd94;
+}
+
+.notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.notes-panel .ant-list-item {
+  display: flex;
+  background-color: white;
+  gap: 15px;
+}
+
+.notes-panel .ant-list-item button {
+  margin-left: auto;
+}

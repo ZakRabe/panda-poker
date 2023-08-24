@@ -3,23 +3,18 @@ import "./votePanel.css";
 import { Button, Popover } from "antd";
 import { FC, useContext } from "react";
 
-import { BonkContext } from "../../hooks/useBonk";
+import { CONST_COMMON_OPTIONS, CONST_FIB_OPTIONS } from "../../const";
+import { BonkContext } from "../../hooks/useBonks";
 import { RevealProps } from "../../hooks/useReveal";
 import { useVote } from "../../hooks/useVote";
-import { RoundChoice } from "../../types";
 import Card from "../Card";
 import BonkButton from "./BonkButton";
 
-export type VoteProps = RevealProps & {
-  options: RoundChoice[];
-};
+export type VoteProps = RevealProps;
 
-const VotePanel: FC<VoteProps> = ({
-  options,
-  countdown,
-  revealed,
-  toggleRevealed,
-}) => {
+const options = [...CONST_FIB_OPTIONS, ...CONST_COMMON_OPTIONS];
+
+const VotePanel: FC<VoteProps> = ({ countdown, revealed, toggleRevealed }) => {
   const [vote, castVote] = useVote();
   const { setBonking } = useContext(BonkContext);
 

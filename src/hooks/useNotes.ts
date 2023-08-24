@@ -35,7 +35,8 @@ export const useNotes = () => {
   const deleteNote = useCallback(
     (index: number) => {
       runTransaction(notesRef, (previousNotes: Game["notes"]) => {
-        const newNotes = previousNotes.splice(index, 1);
+        const newNotes = previousNotes;
+        newNotes.splice(index, 1);
         return newNotes;
       });
     },

@@ -1,20 +1,43 @@
 import "./notes.css";
 
-import { Button, Input, InputRef, List, Popover, Typography } from "antd";
-import { Dispatch, useEffect, useRef, useState } from "react";
+import { Button, Input, InputRef, List, Popover } from "antd";
+import { useEffect, useRef, useState } from "react";
 import { useBoolean } from "usehooks-ts";
 
-import { useNotes } from "../hooks/useNotes";
+import { useNotes, UseNotesReturn } from "../hooks/useNotes";
 
-type NoteProps = {
+type NoteProps = Pick<UseNotesReturn, "deleteNote"> & {
   index: number;
   value: string;
-  deleteNote: Dispatch<number>;
 };
+
+const urlPattern =
+  /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
+
+type ExtractHyperlinkProps = { value: string };
+const ExtractHyperlink = ({ value }: ExtractHyperlinkProps) => {
+  const parsed = value.split(" ").map((word) => {
+    if (!urlPattern.test(word)) {
+      return <>{word} </>;
+    }
+    return (
+      <>
+        <a target="_blank" rel="noreferrer" href={word}>
+          {word}
+        </a>{" "}
+      </>
+    );
+  });
+
+  return <>{parsed}</>;
+};
+
 const Note = ({ index, value, deleteNote }: NoteProps) => {
   return (
     <List.Item>
-      <div>{value}</div>
+      <div>
+        <ExtractHyperlink value={value} />
+      </div>
       <Button
         size="small"
         // @ts-ignore - legacy antd type, missing from props
@@ -29,7 +52,8 @@ const Note = ({ index, value, deleteNote }: NoteProps) => {
   );
 };
 
-const Header = ({ addNote }: { addNote: Dispatch<string> }) => {
+type HeaderProps = Pick<UseNotesReturn, "addNote">;
+const Header = ({ addNote }: HeaderProps) => {
   const { value: open, toggle } = useBoolean(false);
   const [newNote, setNewNote] = useState("");
   const inputRef = useRef<InputRef>(null);
@@ -54,8 +78,13 @@ const Header = ({ addNote }: { addNote: Dispatch<string> }) => {
           setNewNote(value);
         }}
         onKeyUp={({ code }) => {
-          if (code === "Enter") {
-            onSubmit();
+          switch (code) {
+            case "Enter":
+              onSubmit();
+              break;
+            case "Escape":
+              toggle();
+              break;
           }
         }}
       />

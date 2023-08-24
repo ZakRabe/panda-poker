@@ -45,3 +45,5 @@ export const useNotes = () => {
 
   return { notes, addNote, deleteNote };
 };
+
+export type UseNotesReturn = ReturnType<typeof useNotes>;

@@ -1,6 +1,6 @@
 import { Button } from "antd";
 
-import { BonkProps } from "../../hooks/useBonks";
+import { BonkProps } from "../../../hooks/useBonks";
 
 const BonkButton = ({ setBonking }: Pick<BonkProps, "setBonking">) => {
   return (

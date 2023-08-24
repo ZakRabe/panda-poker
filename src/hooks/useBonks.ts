@@ -10,16 +10,17 @@ import {
 } from "react";
 import { useParams } from "react-router-dom";
 
-import { bonkSound } from "../bonk";
+import UserContext from "../App/UserContext";
 import database from "../firebase";
 import { Game } from "../types";
-import UserContext from "../UserContext";
 
 export type BonkProps = {
   isBonking: boolean;
   setBonking: Dispatch<SetStateAction<boolean>>;
   bonkPlayer: Dispatch<string>;
 };
+
+export const bonkSound = new Audio("/bonk.mp3");
 
 export const useBonks = () => {
   const { gameId } = useParams();

@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { v4 as uuid } from "uuid";
 
-import AppLayout from "./AppLayout";
-import database from "./firebase";
+import AppLayout from "../App/AppLayout";
+import database from "../firebase";
 
 // TODO: move styles to CSS
 const New = () => {

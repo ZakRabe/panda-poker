@@ -2,8 +2,8 @@ import { Button, Tag, Typography } from "antd";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import AppLayout from "./AppLayout";
-import { pop } from "./confetti";
+import AppLayout from "../App/AppLayout";
+import { pop } from "../App/confetti";
 
 // TODO: Styles to CSS
 const Home = () => {

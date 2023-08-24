@@ -2,10 +2,10 @@ import { onValue, ref, set } from "firebase/database";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import UserContext from "../App/UserContext";
 import { CONST_EMPTY_OPTION } from "../const";
 import database from "../firebase";
 import { RoundChoice } from "../types";
-import UserContext from "../UserContext";
 
 export const useVote = () => {
   const { gameId } = useParams();

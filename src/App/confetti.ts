@@ -1,8 +1,8 @@
 // @ts-ignore
 import confetti from "canvas-confetti";
 
-var CONFETTI_DURATION_MS = 1000;
-var DEFAULT_CONFETTI_OPTIONS = {
+const CONFETTI_DURATION_MS = 1000;
+const DEFAULT_CONFETTI_OPTIONS = {
   startVelocity: 30,
   spread: 360,
   ticks: 60,

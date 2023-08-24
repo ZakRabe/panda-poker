@@ -2,7 +2,7 @@ import {
   CONST_CARD_BACK_IMAGE,
   CONST_DEFAULT_AVATAR_IMAGE,
   CONST_EMPTY_CARD_IMAGE,
-} from "./assets";
+} from "../../../const";
 import {
   CardNode,
   GraphNode,

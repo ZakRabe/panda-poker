@@ -1,5 +1,5 @@
-import { CONST_EMPTY_OPTION } from "../../const";
-import { Game, RoundChoice, User } from "../../types";
+import { CONST_EMPTY_OPTION } from "../../../const";
+import { Game, RoundChoice, User } from "../../../types";
 import { GraphData } from "./types";
 
 // if a player hasn't selected a choice, we'll show them unlinked

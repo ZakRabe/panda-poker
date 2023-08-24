@@ -3,11 +3,11 @@ import "./votePanel.css";
 import { Button, Popover } from "antd";
 import { FC, useContext } from "react";
 
-import { CONST_COMMON_OPTIONS, CONST_FIB_OPTIONS } from "../../const";
-import { BonkContext } from "../../hooks/useBonks";
-import { RevealProps } from "../../hooks/useReveal";
-import { useVote } from "../../hooks/useVote";
-import Card from "../Card";
+import { CONST_COMMON_OPTIONS, CONST_FIB_OPTIONS } from "../../../const";
+import { BonkContext } from "../../../hooks/useBonks";
+import { RevealProps } from "../../../hooks/useReveal";
+import { useVote } from "../../../hooks/useVote";
+import Card from "../Card/Card";
 import BonkButton from "./BonkButton";
 
 export type VoteProps = RevealProps;

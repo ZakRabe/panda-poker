@@ -4,7 +4,7 @@ import { Button, Input, InputRef, List, Popover } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useBoolean } from "usehooks-ts";
 
-import { useNotes, UseNotesReturn } from "../hooks/useNotes";
+import { useNotes, UseNotesReturn } from "../../../hooks/useNotes";
 
 type NoteProps = Pick<UseNotesReturn, "deleteNote"> & {
   index: number;

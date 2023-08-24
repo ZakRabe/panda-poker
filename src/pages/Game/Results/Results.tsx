@@ -2,8 +2,8 @@ import "./results.css";
 
 import { FC } from "react";
 
-import { useResults } from "../hooks/useResults";
-import { Game } from "../types";
+import { useResults } from "../../../hooks/useResults";
+import { Game } from "../../../types";
 
 const ProgressRing: FC<{
   radius: number;

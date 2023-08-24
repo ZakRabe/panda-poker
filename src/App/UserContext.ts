@@ -1,6 +1,6 @@
-import { createContext } from 'react'
+import { createContext } from "react";
 
-import { User } from './types'
+import { User } from "../types";
 
 export default createContext<User>({
   id: "",

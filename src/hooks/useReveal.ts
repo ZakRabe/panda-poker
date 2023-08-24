@@ -2,7 +2,7 @@ import { onValue, ref, runTransaction } from "firebase/database";
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { pop } from "../confetti";
+import { pop } from "../App/confetti";
 import { CONST_EMPTY_OPTION } from "../const";
 import database from "../firebase";
 import { GameDto } from "../types";

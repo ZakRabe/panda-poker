@@ -2,13 +2,13 @@ import "./game.css";
 
 import { Typography } from "antd";
 
-import AppLayout from "../AppLayout";
-import { BonkContext, useBonks } from "../hooks/useBonks";
-import { useGame } from "../hooks/useGame";
-import { useReveal } from "../hooks/useReveal";
+import AppLayout from "../../App/AppLayout";
+import { BonkContext, useBonks } from "../../hooks/useBonks";
+import { useGame } from "../../hooks/useGame";
+import { useReveal } from "../../hooks/useReveal";
 import ForceGraphTable from "./ForceGraphTable/ForceGraphTable";
-import Notes from "./Notes";
-import Results from "./Results";
+import Notes from "./Notes/Notes";
+import Results from "./Results/Results";
 import VotePanel from "./VotePanel/VotePanel";
 
 const Game = () => {

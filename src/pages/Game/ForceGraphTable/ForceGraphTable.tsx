@@ -11,10 +11,9 @@ import {
 import { ForceGraph2D } from "react-force-graph";
 import { useElementSize } from "usehooks-ts";
 
-import { bonkSound } from "../../bonk";
-import { BonkContext } from "../../hooks/useBonks";
-import { usePlayers } from "../../hooks/useGamePlayers";
-import { Game } from "../../types";
+import { BonkContext, bonkSound } from "../../../hooks/useBonks";
+import { usePlayers } from "../../../hooks/useGamePlayers";
+import { Game } from "../../../types";
 import { buildGraphData } from "./graphData";
 import { nodeCanvasObject, nodePointerAreaPaint } from "./renderers";
 import { GraphNode, isUserNode } from "./types";

@@ -2,8 +2,8 @@ import { ref, set } from "@firebase/database";
 import { Input, Modal, ModalProps } from "antd";
 import { ChangeEventHandler, FC, useContext, useEffect, useState } from "react";
 
+import database from "../firebase";
 import { pop } from "./confetti";
-import database from "./firebase";
 import UserContext from "./UserContext";
 
 const validFileTypes = ["image/png", "image/gif", "image/jpeg"];

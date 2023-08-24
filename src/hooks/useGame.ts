@@ -3,10 +3,10 @@ import { pick } from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import UserContext from "../App/UserContext";
 import { CONST_EMPTY_OPTION } from "../const";
 import database from "../firebase";
 import { Game } from "../types";
-import UserContext from "../UserContext";
 
 type GameState = Pick<Game, "id" | "name" | "players">;
 

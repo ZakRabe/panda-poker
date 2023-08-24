@@ -13,7 +13,7 @@ free planning poker for the homies
 ## Setup
 
 1. `yarn install`
-2. add environment variables for youir firebase realtime database
+2. add environment variables for your firebase realtime database
 
 ```
 REACT_APP_FIREBASE_API_KEY

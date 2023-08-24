@@ -3,7 +3,7 @@ import "./votePanel.css";
 import { Button, Popover } from "antd";
 import { FC, useContext } from "react";
 
-import { BonkContext } from "../../hooks/useBonk";
+import { BonkContext } from "../../hooks/useBonks";
 import { RevealProps } from "../../hooks/useReveal";
 import { useVote } from "../../hooks/useVote";
 import { RoundChoice } from "../../types";

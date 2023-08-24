@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { useParams } from "react-router-dom";
 
 import { bonkSound } from "../bonk";
 import database from "../firebase";
@@ -20,14 +21,15 @@ export type BonkProps = {
   bonkPlayer: Dispatch<string>;
 };
 
-export const useBonk = (game: Game) => {
+export const useBonks = () => {
+  const { gameId } = useParams();
   const [isBonking, setBonking] = useState(false);
   const { id: userId } = useContext(UserContext);
 
   const [activeBonks, setBonks] = useState<Game["bonks"]>({});
   const bonksRef = useMemo(
-    () => ref(database, `games/${game.id}/bonks`),
-    [game.id]
+    () => ref(database, `games/${gameId}/bonks`),
+    [gameId]
   );
 
   useEffect(() => {

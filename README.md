@@ -7,7 +7,7 @@ free planning poker for the homies
 - View relationships between votes and players in an interactive force graph.
 - Each player can vote in secret, then all votes are revealed to the group. 
 - BONK people who are AFK and need to vote.
-- Calculate average vote and group consensus.
+- Calculate votes average and group consensus.
 - Share notes in the Game. URLs are parsed and turned into links.
 
 ## Setup

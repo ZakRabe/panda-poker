@@ -1,5 +1,6 @@
 import { Button, Layout, Typography } from "antd";
 import { FC, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 import EditUser from "./EditUser";
 import UserContext from "./UserContext";
@@ -15,7 +16,13 @@ const AppLayout: FC<{ className?: string }> = ({ children, className }) => {
             <img alt="logo" src="/logo.png" />
           </a>
           <Typography.Title className="title">panda-poker</Typography.Title>
-
+          <div className="new-game">
+            <Link to="/new">
+              <Button type="primary" size="large">
+                Create a Game
+              </Button>
+            </Link>
+          </div>
           <Button className="profile" onClick={() => setProfileOpen(true)}>
             {!!img && (
               <img className="avatar" src={img} alt={`${name} avatar`} />

@@ -18,13 +18,6 @@ const Home = () => {
         Finally enjoy sprint planning with your teammates
       </Typography.Title>
 
-      <div className="new-game">
-        <Link to="/new">
-          <Button type="primary" size="large">
-            Create a Game
-          </Button>
-        </Link>
-      </div>
       <div className="home-content">
         <div className="features">
           <Card>

@@ -25,3 +25,7 @@
 .notes-panel .ant-list-item button {
   margin-left: auto;
 }
+
+.notes-input {
+  margin-bottom: 10px;
+}

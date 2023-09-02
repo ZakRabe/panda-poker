@@ -1,7 +1,7 @@
 import "./notes.css";
 
 import { Button, Input, InputRef, List, Popover } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useBoolean } from "usehooks-ts";
 
 import { useNotes, UseNotesReturn } from "../../../hooks/useNotes";
@@ -57,6 +57,26 @@ const Header = ({ addNote }: HeaderProps) => {
   const { value: open, toggle } = useBoolean(false);
   const [newNote, setNewNote] = useState("");
   const inputRef = useRef<InputRef>(null);
+  const popoverRef = useRef(null);
+
+  useEffect(() => {
+    if (!popoverRef.current || !open) {
+      return;
+    }
+
+    const onClickAway = ({ target }: MouseEvent) => {
+      // @ts-ignore
+      const popoverContent = popoverRef.current.popupRef.current.getElement();
+      if (target !== popoverContent) {
+        toggle();
+      }
+    };
+    window.addEventListener("click", onClickAway);
+    return () => {
+      window.removeEventListener("click", onClickAway);
+    };
+  }, [open, toggle]);
+
   useEffect(() => {
     setNewNote("");
     if (open) {
@@ -64,28 +84,44 @@ const Header = ({ addNote }: HeaderProps) => {
     }
   }, [open]);
 
-  const onSubmit = () => {
+  const onSubmit = useCallback(() => {
+    if (!newNote) {
+      return;
+    }
     addNote(newNote);
     toggle();
-  };
+  }, [addNote, newNote, toggle]);
+
+  useEffect(() => {
+    const onKeyUp = ({ code }: KeyboardEvent) => {
+      switch (code) {
+        case "Enter":
+        case "NumpadEnter":
+          onSubmit();
+          break;
+        case "Escape":
+          toggle();
+          break;
+      }
+    };
+    if (open) {
+      window.addEventListener("keyup", onKeyUp);
+    }
+
+    return () => {
+      window.removeEventListener("keyup", onKeyUp);
+    };
+  }, [onSubmit, open, toggle]);
+
   const content = (
     <>
       <Input
         type="text"
+        className="notes-input"
         ref={inputRef}
         value={newNote}
         onChange={({ target: { value } }) => {
           setNewNote(value);
-        }}
-        onKeyUp={({ code }) => {
-          switch (code) {
-            case "Enter":
-              onSubmit();
-              break;
-            case "Escape":
-              toggle();
-              break;
-          }
         }}
       />
       <div>
@@ -98,6 +134,7 @@ const Header = ({ addNote }: HeaderProps) => {
   return (
     <Popover
       open={open}
+      ref={popoverRef}
       content={content}
       placement="right"
       title="New Note"
@@ -121,7 +158,12 @@ const Notes = () => {
           locale={{ emptyText: "No notes" }}
           dataSource={notes}
           renderItem={(note, index) => (
-            <Note deleteNote={deleteNote} value={note} index={index} />
+            <Note
+              key={index}
+              deleteNote={deleteNote}
+              value={note}
+              index={index}
+            />
           )}
         />
       </div>

@@ -1,4 +1,7 @@
-import { Button, Tag, Typography } from "antd";
+import "./home.css";
+
+import { Button, Card, Tag, Typography } from "antd";
+import Paragraph from "antd/lib/typography/Paragraph";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,10 +14,9 @@ const Home = () => {
   }, []);
   return (
     <AppLayout>
-      <Typography.Title>Welcome</Typography.Title>
-      <p>
-        Why pay for premium when you could just... <strong>not</strong> do that?
-      </p>
+      <Typography.Title level={1}>
+        Finally enjoy sprint planning with your teammates
+      </Typography.Title>
 
       <div className="new-game">
         <Link to="/new">
@@ -22,6 +24,87 @@ const Home = () => {
             Create a Game
           </Button>
         </Link>
+      </div>
+      <div className="home-content">
+        <div className="features">
+          <Card>
+            <Paragraph>
+              <Typography.Title level={3}>
+                🌟 Unleash Interactive Sprint Planning!
+              </Typography.Title>
+
+              <blockquote>
+                Elevate your team's sprint planning and collaboration to new
+                heights!
+              </blockquote>
+            </Paragraph>
+          </Card>
+
+          <Card>
+            <Paragraph>
+              <Typography.Title level={3}>💵 Why Pay?!</Typography.Title>
+              <blockquote>
+                You could just... <strong>not do that.</strong>
+              </blockquote>
+            </Paragraph>
+          </Card>
+
+          <Card>
+            <Paragraph>
+              <Typography.Title level={3}>
+                🎨 Express Yourself with Avatars & Display Names!
+              </Typography.Title>
+              <blockquote>No login, no hassle.</blockquote>
+            </Paragraph>
+          </Card>
+
+          <Card>
+            <Paragraph>
+              <Typography.Title level={3}>
+                🔨 Nudge the Procrastinators with a Friendly BONK!
+              </Typography.Title>
+              <blockquote>
+                Give a playful reminder to those AFK teammates who need a little
+                push to cast their votes.
+              </blockquote>
+            </Paragraph>
+          </Card>
+
+          <Card>
+            <Paragraph>
+              <Typography.Title level={3}>📝 Share Notes!</Typography.Title>
+              <blockquote>
+                Easily share links and important information with your team.
+              </blockquote>
+            </Paragraph>
+          </Card>
+
+          <Card>
+            <Paragraph>
+              <Typography.Title level={3}>
+                📊 Calculated Averages & Consensus!
+              </Typography.Title>
+              <blockquote>
+                Get instant insights into your team's collective wisdom, making
+                decision-making a breeze.
+              </blockquote>
+            </Paragraph>
+          </Card>
+
+          <Card>
+            <Paragraph onMouseOver={pop}>
+              <Typography.Title level={3}>🎉🎉🎉🎉</Typography.Title>
+            </Paragraph>
+          </Card>
+        </div>
+        <div className="screenshot">
+          <img
+            src="/home-example.png"
+            alt="example planning session screenshot"
+            width="100%"
+            height="auto"
+          />
+        </div>
       </div>
 
       <div className="recipe">

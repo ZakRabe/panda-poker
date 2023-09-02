@@ -66,6 +66,7 @@ const renderCard = (
   node.__pointerRect = [node.x - width / 2, node.y - height / 2, width, height];
   setShadow(ctx);
   ctx.drawImage(cardImage, ...node.__pointerRect);
+  ctx.restore();
   // put text value in the center of the card
   if (node.revealed) {
     ctx.font = `bold 25px "Segoe UI"`;

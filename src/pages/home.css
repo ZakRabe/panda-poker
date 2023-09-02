@@ -1,0 +1,30 @@
+.home-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+.home-content .features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.new-game {
+  text-align: center;
+  margin: 30px;
+}
+
+.home-content .ant-card-body blockquote {
+  border-left-color: #ec4e20;
+}
+
+h1 {
+  margin: 30px;
+}
+
+.home-content .screenshot {
+  display: flex;
+  flex-direction: column;
+}

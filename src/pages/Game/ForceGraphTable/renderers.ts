@@ -12,6 +12,13 @@ import {
   UserNode,
 } from "./types";
 
+const setShadow = (ctx: CanvasRenderingContext2D) => {
+  ctx.shadowColor = "#000";
+  ctx.shadowBlur = 6;
+  ctx.shadowOffsetX = 3;
+  ctx.shadowOffsetY = 3;
+};
+
 const scaleImage = (image: HTMLImageElement, targetSize: number) => {
   const ratio = targetSize / image.width;
   const height = image.height * ratio;
@@ -35,10 +42,13 @@ const renderPlayer = (
   ctx.fillStyle = "#47271a";
   ctx.strokeStyle = "#47271a";
   ctx.lineWidth = 4;
+  setShadow(ctx);
   ctx.fill();
   ctx.stroke();
   ctx.clip();
   ctx.drawImage(image, node.x - width / 2, node.y - height / 2, width, height);
+  ctx.closePath();
+  ctx.restore();
   ctx.closePath();
   ctx.restore();
 };
@@ -54,7 +64,7 @@ const renderCard = (
   ctx.save();
   ctx.beginPath();
   node.__pointerRect = [node.x - width / 2, node.y - height / 2, width, height];
-
+  setShadow(ctx);
   ctx.drawImage(cardImage, ...node.__pointerRect);
   // put text value in the center of the card
   if (node.revealed) {

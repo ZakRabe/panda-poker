@@ -14,9 +14,9 @@ import {
 
 const setShadow = (ctx: CanvasRenderingContext2D) => {
   ctx.shadowColor = "#000";
-  ctx.shadowBlur = 6;
-  ctx.shadowOffsetX = 3;
-  ctx.shadowOffsetY = 3;
+  ctx.shadowBlur = 7;
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 2;
 };
 
 const scaleImage = (image: HTMLImageElement, targetSize: number) => {

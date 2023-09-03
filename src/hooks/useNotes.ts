@@ -10,7 +10,7 @@ export const useNotes = () => {
   const [notes, setNotes] = useState<string[]>([]);
 
   const notesRef = useMemo(
-    () => ref(database, `notes/${gameId}/notes`),
+    () => ref(database, `games/${gameId}/notes`),
     [gameId]
   );
 

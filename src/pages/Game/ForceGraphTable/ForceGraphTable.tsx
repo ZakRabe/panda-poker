@@ -51,7 +51,7 @@ const ForceGraphTable = ({ players, revealed }: ForceGraphTableProps) => {
     const graph = (graphRef as ComponentProps<typeof ForceGraph2D>["ref"])!
       .current;
     if (graph) {
-      graph.d3Force("collide", forceCollide(15));
+      graph.d3Force("collide", forceCollide(25));
     }
   }, []);
 

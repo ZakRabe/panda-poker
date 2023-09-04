@@ -67,7 +67,10 @@ const Header = ({ addNote }: HeaderProps) => {
     const onClickAway = ({ target }: MouseEvent) => {
       // @ts-ignore
       const popoverContent = popoverRef.current.popupRef.current.getElement();
-      if (target !== popoverContent) {
+      const isNotesPanel = document
+        .querySelector(".notes-panel")
+        ?.contains(target as Node);
+      if (target !== popoverContent && !isNotesPanel) {
         toggle();
       }
     };

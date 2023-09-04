@@ -6,10 +6,6 @@ h5 {
   font-family: Blender Pro;
 }
 
-.ant-layout-header {
-  background-color: #d0cd94 !important;
-}
-
 .ant-btn-primary {
   background-color: #ec4e20 !important;
   border-color: black !important;
@@ -27,6 +23,10 @@ h5 {
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-image: url("../public/header-bg.jpg") !important;
+  background-blend-mode: overlay;
+  height: 128px !important;
+  background-color: #d0cd94 !important;
 }
 
 .ant-layout-header .logo {
@@ -42,10 +42,8 @@ h5 {
 .ant-layout-header .title {
   margin: 0;
   color: #47271a;
-}
-
-.ant-layout-header .profile {
-  margin-left: auto;
+  padding: 0px 10px;
+  background-color: #ecff7f;
 }
 
 .ant-layout-header .profile .avatar {
@@ -60,7 +58,7 @@ h5 {
 .ant-layout-content {
   padding: 0 50px;
   margin: 0;
-  min-height: calc(100vh - 64px) !important;
+  min-height: calc(100vh - 128px) !important;
 }
 
 img.avatar {
@@ -82,4 +80,16 @@ img.avatar {
 
 .create-game input {
   margin-bottom: 10px;
+}
+
+.header-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.createGame-button {
+  box-shadow: 0px 0px 15px 5px #ec4e20 !important;
 }

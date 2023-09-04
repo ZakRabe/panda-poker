@@ -16,20 +16,21 @@ const AppLayout: FC<{ className?: string }> = ({ children, className }) => {
             <img alt="logo" src="/logo.png" />
           </a>
           <Typography.Title className="title">panda-poker</Typography.Title>
-          <div className="new-game">
+
+          <div className="header-buttons">
             <Link to="/new">
-              <Button type="primary" size="large">
+              <Button type="primary" size="large" className="createGame-button">
                 Create a Game
               </Button>
             </Link>
+            <Button className="profile" onClick={() => setProfileOpen(true)}>
+              {!!img && (
+                <img className="avatar" src={img} alt={`${name} avatar`} />
+              )}
+              {name && <span>{name}</span>}
+              {!img && !name && "🚀"}
+            </Button>
           </div>
-          <Button className="profile" onClick={() => setProfileOpen(true)}>
-            {!!img && (
-              <img className="avatar" src={img} alt={`${name} avatar`} />
-            )}
-            {name && <span>{name}</span>}
-            {!img && !name && "🚀"}
-          </Button>
         </Layout.Header>
         <Layout.Content>{children}</Layout.Content>
       </Layout>

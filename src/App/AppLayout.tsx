@@ -12,10 +12,12 @@ const AppLayout: FC<{ className?: string }> = ({ children, className }) => {
     <>
       <Layout className={className}>
         <Layout.Header>
-          <a href="/" className="logo">
-            <img alt="logo" src="/logo.png" />
-          </a>
-          <Typography.Title className="title">panda-poker</Typography.Title>
+          <div className="header-brand">
+            <a href="/" className="logo">
+              <img alt="logo" src="/logo.png" />
+            </a>
+            <Typography.Title className="title">panda-poker</Typography.Title>
+          </div>
 
           <div className="header-buttons">
             <Link to="/new">

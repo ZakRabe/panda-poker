@@ -43,9 +43,8 @@ export const useBonks = () => {
 
   // watch game.bonks for my user ID
   useEffect(() => {
-    const bonkedPlayers = activeBonks ? Object.keys(activeBonks) : [];
     // when we find it play BONK
-    if (bonkedPlayers.includes(userId)) {
+    if (activeBonks[userId]) {
       bonkSound.play();
       runTransaction(bonksRef, (bonks: Game["bonks"]) => {
         const newBonks = { ...bonks };

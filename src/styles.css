@@ -93,3 +93,34 @@ img.avatar {
 .createGame-button {
   box-shadow: 0px 0px 15px 5px #ec4e20 !important;
 }
+
+@media (max-width: 768px) {
+  .ant-layout-header {
+    flex-direction: column;
+  }
+  .header-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  .ant-layout-header .logo {
+    height: 36px;
+  }
+  .ant-layout-header .title {
+    /* font-size: 1.5rem; */
+    display: inline-flex;
+  }
+  .home-content {
+    display: flex !important;
+    flex-direction: column-reverse;
+  }
+
+  .ant-layout-content {
+    padding: 0 10px;
+  }
+
+  .ant-layout-content h1 {
+    font-size: 26px !important;
+  }
+}

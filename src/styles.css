@@ -94,7 +94,7 @@ img.avatar {
   box-shadow: 0px 0px 15px 5px #ec4e20 !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .ant-layout-header {
     flex-direction: column;
   }
@@ -108,12 +108,7 @@ img.avatar {
     height: 36px;
   }
   .ant-layout-header .title {
-    /* font-size: 1.5rem; */
     display: inline-flex;
-  }
-  .home-content {
-    display: flex !important;
-    flex-direction: column-reverse;
   }
 
   .ant-layout-content {

@@ -51,7 +51,7 @@ const ForceGraphTable = ({ players, revealed }: ForceGraphTableProps) => {
     const graph = (graphRef as ComponentProps<typeof ForceGraph2D>["ref"])!
       .current;
     if (graph) {
-      graph.d3Force("collide", forceCollide(50));
+      graph.d3Force("collide", forceCollide(40));
     }
   }, []);
 
@@ -74,6 +74,11 @@ const ForceGraphTable = ({ players, revealed }: ForceGraphTableProps) => {
         onNodeClick={onNodeClick}
         nodePointerAreaPaint={nodePointerAreaPaint}
         ref={graphRef as any}
+        onEngineStop={() => graphRef.current.zoomToFit(400)}
+        onNodeDragEnd={node => {
+            node.fx = node.x;
+            node.fy = node.y;
+        }}
       />
     </div>
   );

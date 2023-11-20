@@ -32,7 +32,8 @@ const selectedChoice = { id: "selected", type: "card", revealed: false };
 export const buildGraphData = (
   gameState: Game["players"] | null,
   revealed: boolean,
-  playersData: Map<string, User>
+  playersData: Map<string, User>,
+  nodePositions: Record<string, { x: number; y: number }>
 ) => {
   if (!gameState) {
     return { nodes: [], links: [] };
@@ -72,6 +73,17 @@ export const buildGraphData = (
     },
     initialData
   );
+
+  graphData.nodes = graphData.nodes.map((node) => {
+    if (nodePositions[node.id]) {
+      console.log(node.id, nodePositions[node.id]);
+      return {
+        ...node,
+        ...nodePositions[node.id],
+      };
+    }
+    return node;
+  });
 
   return graphData;
 };
